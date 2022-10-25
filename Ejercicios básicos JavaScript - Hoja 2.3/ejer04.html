@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // Creo una constante diagonal, en la que hago la raíz cuadrada a través de la función sqrt() del objeto Math. Pongo como valores el ancho y alto de la pantalla a través del objeto Screen. El cuadrado se hace con el operador ^2.
+        const diagonal = Math.sqrt(screen.width ^ 2 + screen.height ^ 2);
+        // A través del objeto Document, cambio los parámetros del título y estilos del body, que lo localizo a través de la función querySelector().
+        document.title = "Varios objetos predefinidos de JavaScript";
+        var body = document.querySelector("body");
+        body.style.backgroundColor = "grey";
+        body.style.color = "white";
+        // Escribo un div, un h1 y un p de HTML a través de la función write() e incluyo el valor de la diagonal calculado anteriormente.
+        document.write("<div style='position: fixed; left: 0%; bottom: 0%; width: 100%; height: 50%;'><h1>Varios objetos predefinidos de JavaScript</h1>")
+        document.write("<p style='text-align: center;'> El valor en píxeles de la diagonal de la pantalla es " + diagonal + "</p></div>")
+    </script>
+</body>
+</html>

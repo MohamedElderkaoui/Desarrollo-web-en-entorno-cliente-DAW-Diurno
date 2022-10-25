@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var jokok="top=100,left=100, width=200,height=150",i=0;
+        var mi_ventana=window.open("", "myWindow", jokok);
+        mi_ventana.open();
+        var i =1;
+        do {
+            i++;  mi_ventana.open();
+            mi_ventana.setTimeout(107100);
+            mi_ventana.moveBy(5,5);
+            if(i==20){
+                mi_ventana.close();
+                break;
+            }
+        } while (true);
+    </script>
+</body>
+</html>

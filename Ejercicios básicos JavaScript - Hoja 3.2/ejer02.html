@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        //-	Comprueba si el primero es mayor que el segundo.
+        function mayorQue(num1, num2){
+            if (num1>num2) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+        //-	Comprueba si el segundo es positivo
+        function positivo(num2){
+            if (num2>0) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+        //-	Comprueba si el primero es negativo o distinto de cero.
+        function negativo(num1){
+            if (num1<0 || num1!=0) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+        //-	Comprueba si al sumar 1 al primero lo convertimos en mayor o igual que el segundo.
+        function suma(num1, num2){
+            if (num1+1>=num2) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+    </script>
+</head>
+<body>
+    <script>
+        var num1 = prompt("Introduce un número");
+        var num2 = prompt("Introduce otro número");
+/*
+* Create a function that returns true if the first number is greater than the second, and false otherwise.
+*/        if (mayorQue(num1, num2)) {
+            if (positivo(num2)) {
+                if (negativo(num1)) {
+                    if (suma(num1, num2)) {
+                        // TODO: escribir en el documento
+                        document.write("Number"+num1+" is greater than "+num2+" and "+num2+" is positive and "+num1+" is negative or different from zero and if we add 1 to "+num1+" we get a number greater than or equal to "+num2);
+                        alert("El número "+num1+" es mayor que "+num2+", el número "+num2+" es positivo, el número "+num1+" es negativo o distinto de cero y al sumar 1 al número "+num1+" lo convertimos en mayor o igual que el número "+num2);
+                    } else {
+                        document.write("Number"+num1+" is greater than "+num2+" and "+num2+" is positive and "+num1+" is negative or different from zero and if we add 1 to "+num1+" we get a number less than "+num2);
+                        alert("El número "+num1+" es mayor que "+num2+", el número "+num2+" es positivo, el número "+num1+" es negativo o distinto de cero y al sumar 1 al número "+num1+" no lo convertimos en mayor o igual que el número "+num2);
+                    }
+                } else {
+                    document.write("Number"+num1+" is greater than "+num2+" and "+num2+" is positive and "+num1+" is not negative or different from zero");
+                    alert("El número "+num1+" es mayor que "+num2+", el número "+num2+" es positivo y el número "+num1+" no es negativo o distinto de cero");
+                }
+            } else {
+                document.write("Number"+num1+" is greater than "+num2+" and "+num2+" is not positive");
+                alert("El número "+num1+" es mayor que "+num2+" y el número "+num2+" no es positivo");
+            }
+        }
+   </script>
+</body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      function valida_DNI(dni) {
+        if (dni.length == 8) {
+          var numero = parseInt(
+            dni
+              .substr(0, dni.length - 1)
+              .replace("x", "0")
+              .replace("y", "1")
+              .replace("z", "2")
+          );
+          var letras = [
+            "T",
+            "R",
+            "W",
+            "A",
+            "G",
+            "M",
+            "Y",
+            "F",
+            "P",
+            "D",
+            "X",
+            "B",
+            "N",
+            "J",
+            "Z",
+            "S",
+            "Q",
+            "V",
+            "H",
+            "L",
+            "C",
+            "K",
+            "E",
+          ];
+          var letra = dni.substr(dni.length - 1, 1).toUpperCase();
+          if (letras[numero % 23] == letra) {
+            return false;
+          } else {
+            return true;
+          }
+        } else {
+          return true;
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <script>
+      var dni = prompt("Introduce un DNI");
+      if (valida_DNI(dni)) {
+        alert("DNI incorrecto");
+      } else {
+        alert("DNI correcto");
+      }
+    </script>
+  </body>
+</html>

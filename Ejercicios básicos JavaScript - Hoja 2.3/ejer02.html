@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // He creado cadenas para los nombres de los días de la semana y de los meses, ya que no sabía sacarlo de otra manera.
+      // Más tarde, lo he hecho con la función toLocaleString().
+      // Luego con las funciones del objeto Date, conseguía sacar la frase que se indicaba.
+      // He usado la función padStart(2, '0') del objeto Date para poner formato de 2 dígitos.
+
+      const fecha_actual = new Date();
+
+      const minutos = String(fecha_actual.getMinutes()).padStart(2, "0"); //Formateo los minutos para que sea formato de 2 dígitos siempre.
+
+      document.write(
+        "Hoy es " +
+          fecha_actual.toLocaleString("es-ES", { weekday: "long" }) +
+          ", " +
+          fecha_actual.getUTCDate() +
+          " de " +
+          fecha_actual.toLocaleString("es-ES", { month: "long" }) +
+          " de " +
+          fecha_actual.getFullYear() +
+          " y son las " +
+          fecha_actual.getHours() +
+          ":" +
+          minutos +
+          " horas."
+      );
+    </script>
+  </body>
+</html>

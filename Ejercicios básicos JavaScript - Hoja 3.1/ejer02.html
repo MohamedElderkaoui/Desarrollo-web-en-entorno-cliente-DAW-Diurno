@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+        function valida(array) {
+            if (array[4].length > array[3].length) {
+                return "-	El cuarto componente es mayor que el tercero";
+            } else {
+                return "-	El cuarto componente no es mayor que el tercero";
+            }}
+            function or(array) {
+                if (array[0] || array[2]) {
+                    return "-	El primer o tercer componente es verdadero";
+                } else {
+                    return "-	El primer o tercer componente no es verdadero";
+                }
+
+            }
+            function and(array) {
+                if (array[0] && array[2]) {
+                    return "-	El primer y tercer componente es verdadero";
+                } else {
+                    return "-	El primer y tercer componente no es verdadero";
+                }
+            }
+            function operaciones(array) {
+                return "-	Sumar: " + (array[1] + array[5]) + " Restar: " + (array[1] - array[5]) + " Multiplicar: " + (array[1] * array[5]) + " Dividir: " + (array[1] / array[5]);
+
+            }
+    </script>
+</head>
+
+<body>
+    <script>
+            var array = [true, 5, false, 'hola', 'adios', 2];
+            alert('array = ' + array + '\n');
+            document.write(valida(array) + '<br>');
+            document.write("-	El cuarto componente es mayor o no que el tercero.?" + valida(array) + '<br>');
+            document.write("-	OR entre el primer y tercer componente" + valida(array) + '<br>');
+            document.write("-	AND entre el primer y tercer componente" + valida(array) + '<br>');
+            document.write("-	Sumar, restar, multiplicar, dividir y calcular el módulo entre el segundo y el sexto componente" + operaciones(array) + '<br>');
+    </script>
+</body>
+
+</html>
