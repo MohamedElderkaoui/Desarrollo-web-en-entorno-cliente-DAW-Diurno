@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>   
+    /* 3.	Crea un script que defina un objeto llamado “ProductosAlimenticios”. Este objeto debe presentar las propiedades código, nombre y precio, además del método “imprimeDatos”, el cual escribe por pantalla los valores de sus propiedades. Posteriormente, crea tres instancias de este objeto y guárdalas en un array. Con la ayuda del bucle for, utiliza el método “imprimeDatos” para mostrar por pantalla los valores de los tres objetos instanciados. */
+    class ProductosAlimenticios {
+        //#endregion
+        #codigo;
+        #nombre;
+        #precio;
+        constructor(codigo, nombre, precio) {
+            this.codigo = codigo;
+            this.nombre = nombre;
+            this.precio = precio;
+        }
+        imprimeDatos() {
+            document.write("Código: " + this.codigo + "<br>");
+            document.write("Nombre: " + this.nombre + "<br>");
+            document.write("Precio: " + this.precio + "<br>");
+        }
+        get codigo() {
+            return this.#codigo;
+        }
+        set codigo(codigo) {
+            this.#codigo = codigo;
+        }
+        get nombre() {
+            return this.#nombre;
+        }
+        set nombre(nombre) {
+            this.#nombre = nombre;
+        }
+        get precio() {
+            return this.#precio;
+        }
+        set precio(precio) {
+            this.#precio = precio;
+        }
+
+    } 
+    </script>
+</head>
+<body>
+    <script>
+        var productos = [];
+   var number = prompt("Introduce un número");
+    for (let i = 0; i < number; i++) {
+        var codigo = prompt("Introduce el código del producto"+i+":");
+        var nombre = prompt("Introduce el nombre del producto"+i+":");
+        var precio = prompt("Introduce el precio del producto"+i+":");
+        var producto = new ProductosAlimenticios(codigo, nombre, precio);
+        for (let j = 0; j < productos.length; j++) {
+            if (productos[j].codigo == producto.codigo) {
+                alert("El código del producto ya existe");
+                i--;//Para que vuelva a pedir los datos del producto
+                break;
+            }else{
+                productos.push(producto);
+            }
+        }
+    }
+        for (let i = 0; i < productos.length; i++) {
+            productos[i].imprimeDatos();
+        }
+    </script>
+</body>
+</html>
