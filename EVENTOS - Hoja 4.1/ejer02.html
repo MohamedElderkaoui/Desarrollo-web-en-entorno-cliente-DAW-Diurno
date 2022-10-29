@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+
+        function tamanoVentanaNavegador() {
+            // Adaptada de http://www.howtocreate.co.uk/tutorials/javascript/browserwindow
+            var dimensiones = [];
+            if (typeof(window.innerWidth) == 'number') {
+                // No es IE.
+                dimensiones = [window.innerWidth, window.innerHeight];
+            } else if (document.documentElement && (document.documentElement.clientWidth || document.documentElement.clientHeight)) {
+                // IE 6 en modo estandar (no quirks).
+                dimensiones = [document.documentElement.clientWidth, document.documentElement.clientHeight];
+            } else if (document.body && (document.body.clientWidth || document.body.clientHeight)) {
+                // IE en modo quirks.
+                dimensiones = [document.body.clientWidth, document.body.clientHeight];			}
+            return dimensiones;
+        }
+        function coordenadas(event) {
+            var dimensiones = tamanoVentanaNavegador();
+            var ancho = dimensiones[0];
+            var alto = dimensiones[1];
+            var x = event.clientX;
+            var y = event.clientY;
+            if (x < ancho/2 && y < alto/2) {
+                alert("Rojo");
+            } else if (x > ancho/2 && y < alto/2) {
+                alert("Amarillo");
+            } else if (x < ancho/2 && y > alto/2) {
+                alert("Azul");
+            } else {
+                alert("Verde");
+            }
+        }
+
+    </script>
+</head>
+<body>
+    <script>
+        var dimensiones = tamanoVentanaNavegador();
+        var ancho = dimensiones[0];
+        var alto = dimensiones[1];
+        document.write("<div style='width:" + ancho/2 + "px; height:" + alto/2 + "px; background-color:red;' onclick='coordenadas(event)'></div>");
+        document.write("<div style='width:" + ancho/2 + "px; height:" + alto/2 + "px; background-color:yellow;' onclick='coordenadas(event)'></div>");
+        document.write("<div style='width:" + ancho/2 + "px; height:" + alto/2 + "px; background-color:blue;' onclick='coordenadas(event)'></div>");
+        document.write("<div style='width:" + ancho/2 + "px; height:" + alto/2 + "px; background-color:green;' onclick='coordenadas(event)'></div>");
+        
+    </script>
+</body>
+</html>

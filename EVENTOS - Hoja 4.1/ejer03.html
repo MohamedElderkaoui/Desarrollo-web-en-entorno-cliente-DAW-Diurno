@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        /*
+        3.	Crea una caja de texto donde quepan 100 caracteres, y que a medidas que escribamos nos avise del número de caracteres que quedan libres. Además, se debe permitir pulsar las teclas “Backspace”, “Supr” y las flechas horizontales cuando se haya llegado al máximo número de caracteres.*/
+        function caracteres(event) {
+            var texto = document.getElementById("texto").value;
+            var caracteres = texto.length;
+            var caracteresRestantes = 100 - caracteres;
+            document.getElementById("caracteres").innerHTML = caracteresRestantes;
+            if (caracteresRestantes == 0) {
+                if (event.keyCode == 8 || event.keyCode == 46 || event.keyCode == 37 || event.keyCode == 39) {
+                    return true;
+                } else {
+                    return false;
+                }
+            }
+        }
+
+    </script>
+</head>
+<body>
+    <form action="">
+        <input type="text" name="texto" id="texto" onkeydown="return caracteres(event)" maxlength="100">
+       <script>
+        alert(" <p>Caracteres restantes: <span id="caracteres">100</span></p>")
+       </script>
+    </form>
+</body>
+</html>
