@@ -98,10 +98,11 @@ function permite(elEvento, permitidos) {
             return permitidos.indexOf(caracter) != -1 || tecla_especial;
         }
 
+
     </script>
 </head>
 <body>
-    <form action="">
+    <form action="" method="post">
         <input type="text" id="texto" onkeypress="return permite(event, 'num')"/>
         <input type="text" id="texto" onkeypress="return permite(event, 'car')"/>
         <input type="text" id="texto" onkeypress="return permite(event, 'num_car')"/>
