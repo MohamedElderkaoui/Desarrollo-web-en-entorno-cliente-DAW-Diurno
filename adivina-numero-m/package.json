@@ -1,0 +1,22 @@
+{
+  "name": "adivina-numero",
+  "version": "1.0.0",
+  "description": "",
+  "main": "Untitled-1.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/juanda99/adivina-numero.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/juanda99/adivina-numero/issues"
+  },
+  "homepage": "https://github.com/juanda99/adivina-numero#readme",
+  "devDependencies": {
+    "eslint": "^8.27.0"
+  }
+}
