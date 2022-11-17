@@ -22,10 +22,45 @@ document.querySelector('.check').addEventListener('click', () => {
         if (score > highscore) {
             highscore = score
             highscoreField.textContent = highscore
+
         }
         //TODO: #1 VISUAL EL NUMERO , CAMBIAR COLOR DE FONDO
+        numberField.textContent = secretNumber
+        body.style.backgroundColor = '#60b347'
+        body.backgroundColor = 'green'
+
+        numberField.textContent = secretNumber
 }else{
+        if (score > 1) {
+            displayMessage(guess > secretNumber? '📈 Too high!' : '📉 Too low!')
+            score--
+            scoreField.textContent = score
+        } else {
+            displayMessage('💢 You lost the game!')
+            scoreField.textContent = 0
+        }
+
 
 }
 })
+//´TODO:  
+/**     
+ * guardar el numero highscore
+ * boton de nuevo juego again
+ * 
+ */
+document.querySelector('.again').addEventListener('click', () => {
+    if (score > highscore) {
+    highscoreField.textContent = score.value
+    }
+    body.style.backgroundColor = '#fff'
+    score = 20
+    secretNumber = Math.trunc(Math.random() * 20) + 1
+    displayMessage('Start guessing...')
+    scoreField.textContent = score
+    numberField.textContent = '?'
+    guessField.value = ''
+    body.style.backgroundColor = '#222'
+})
+
 console.log(secretNumber)
