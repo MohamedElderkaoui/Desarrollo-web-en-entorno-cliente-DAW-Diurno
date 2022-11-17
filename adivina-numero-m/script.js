@@ -17,5 +17,15 @@ document.querySelector('.check').addEventListener('click', () => {
     console.log('numeric', messageField.value, guessField.value , secretNumber, score, highscore)
     const guess = Number(guessField.value) 
     if (!guess) displayMessage('No number!')
+    else if (guess === secretNumber) {
+        displayMessage('Correct number!')
+        if (score > highscore) {
+            highscore = score
+            highscoreField.textContent = highscore
+        }
+        //TODO: #1 VISUAL EL NUMERO , CAMBIAR COLOR DE FONDO
+}else{
+
 }
-)
+})
+console.log(secretNumber)
