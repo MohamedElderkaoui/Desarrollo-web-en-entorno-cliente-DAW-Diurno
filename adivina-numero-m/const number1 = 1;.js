@@ -5,8 +5,12 @@ function suma(a, b) {
   return a + b;
 } */
 /* 
-suma(number1, number20); */
-const m=document.querySelector('.message').addEventListener(
+suma(number1, number20);
+ */
+const m=
+document.querySelector('.message').addEventListener(
     'click', function suma(a, b) {
   return a + b;
 }   );
+
+console.log(suma(number1, number20));
