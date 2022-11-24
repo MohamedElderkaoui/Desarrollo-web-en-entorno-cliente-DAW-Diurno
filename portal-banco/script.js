@@ -120,7 +120,8 @@ function calcDisplaySummary (movements) {
     .filter((mov) => mov >= 5)
     .reduce((acc, cur) => acc + cur, 0)
   labelSumInterest.textContent = `${intereses.toFixed(2)}€`
-}//json 
+}
+//json 
 /* calcular y mostrar balance */
 function calcDisplayBalance (movements) {
   const balance = movements.reduce((acc, mov) => acc + mov, 0)
@@ -144,7 +145,7 @@ function displayMovements (movements) {
     // insertAdjacentHTML
   })
 }
-//transferencia
+
 btnTransfer.addEventListener('click', (event) => {
   event.preventDefault()
   const amount = Number(inputTransferAmount.value)
@@ -155,9 +156,8 @@ btnTransfer.addEventListener('click', (event) => {
   inputTransferAmount.blur()
   if (
     amount > 0 &&
-    receiverAcc &&
     currentAccount.balance >= amount &&
-    receiverAcc?.username !== currentAccount.username
+    receiverAcc?.username !== currentAccount.username// receiverAcc es definido y no es igual al usuario actual
   ) {
     currentAccount.movements.push(-amount)
     receiverAcc.movements.push(amount)
@@ -165,4 +165,46 @@ btnTransfer.addEventListener('click', (event) => {
     calcDisplayBalance(currentAccount.movements)
     displayMovements(currentAccount.movements)
   }
+})
+
+/* Request loan */
+btnLoan.addEventListener('click', (event) => {
+  event.preventDefault()
+  const amount = Number(inputLoanAmount.value)
+  if (
+    amount > 0 &&
+    currentAccount.movements.some((mov) => mov >= amount * 0.1)
+  ) {
+    currentAccount.movements.push(amount)
+    calcDisplaySummary(currentAccount.movements)
+    calcDisplayBalance(currentAccount.movements)
+    displayMovements(currentAccount.movements)
+  }
+  inputLoanAmount.value = ''
+}
+
+/* Close account */
+
+btnClose.addEventListener('click', (event) => {
+  event.preventDefault()
+  if (
+    inputCloseUsername.value === currentAccount.username &&
+    Number(inputClosePin.value) === currentAccount.pin
+  ) {
+    const index = accounts.findIndex(
+      (acc) => acc.username === currentAccount.username
+    )
+    accounts.splice(index, 1)
+    containerApp.style.opacity = 0
+  }
+  inputCloseUsername.value = inputClosePin.value = ''
+
+
+  /* Sort movements */
+  let sorted = false
+  btnSort.addEventListener('click', (event) => {
+    event.preventDefault()
+    displayMovements(currentAccount.movements, !sorted)
+    sorted = !sorted
+  })
 })
