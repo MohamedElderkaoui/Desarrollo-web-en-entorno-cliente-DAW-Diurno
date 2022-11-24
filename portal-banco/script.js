@@ -8,33 +8,39 @@ const account1 = {
   owner: 'Juan Sánchez',
   movements: [200, 450, -400, 3000, -650, -130, 70, 1300],
   interestRate: 1.2, // %
-  pin: 1111,
+  pin: 1111
 }
 
 const account2 = {
   owner: 'María Portazgo',
   movements: [5000, 3400, -150, -790, -3210, -1000, 8500, -30],
   interestRate: 1.5,
-  pin: 2222,
+  pin: 2222
 }
 
 const account3 = {
   owner: 'Estefanía Pueyo',
   movements: [200, -200, 340, -300, -20, 50, 400, -460],
   interestRate: 0.7,
-  pin: 3333,
+  pin: 3333
 }
 
 const account4 = {
   owner: 'Javier Rodríguez',
   movements: [430, 1000, 700, 50, 90],
   interestRate: 1,
-  pin: 4444,
+  pin: 4444
 }
 
-const accounts = [account1, account2, account3, account4]
+const account5 = {
+  owner: 'mohamed merzouk',
+  movements: [430, 1000, 700, 50, 90, -100],
+  interestRate: 1,
+  pin: 1998
+}
+const accounts = [account1, account2, account3, account4, account5]
 
-function createUsernames(users) {
+function createUsernames (users) {
   users.forEach((user) => {
     // eslint-disable-next-line no-param-reassign
     user.username = user.owner
@@ -73,24 +79,56 @@ const inputLoanAmount = document.querySelector('.form__input--loan-amount')
 const inputCloseUsername = document.querySelector('.form__input--user')
 const inputClosePin = document.querySelector('.form__input--pin')
 
+let currentAccount
 btnLogin.addEventListener('click', (event) => {
   event.preventDefault()
-  const currentAccount = accounts.find(
+  currentAccount = accounts.find(
     (acc) => acc.username === inputLoginUsername.value
   )
 
   if (currentAccount && currentAccount.pin === Number(inputLoginPin.value)) {
     labelWelcome.textContent = `Bienvenido ${
-      currentAccount.owner.split(' ')[0]
+        currentAccount.owner.split(' ')[0]
     }`
     containerApp.style.opacity = 100
+    inputLoginUsername.value = inputLoginPin.value = ''
+    inputLoginPin.blur()
+    calcDisplaySummary(currentAccount.movements)
+    calcDisplayBalance(currentAccount.movements)
+    displayMovements(currentAccount.movements)
   }
   console.log(currentAccount)
 })
 
-function displayMovements(movements) {
-  containerMovements.innerHTML = ''
+/* calcular y mostrar ingresos totales, retiradas totales e intereses */
+function calcDisplaySummary (movements) {
+  const ingresos = movements
+    .filter((mov) => mov > 0)
+    .reduce((acc, cur) => acc + cur, 0)
+  labelSumIn.textContent = ingresos
+  // gastos
+  const gastos = movements
+    .filter((mov) => mov < 0)
+    .reduce((acc, cur) => acc + cur, 0)
+  labelSumOut.textContent = `${gastos.toFixed(2)}€`
+  // intereses
+  // se calcularán los intereses de los movimientos positivos
+  // se descartarán si el interés final es menor de 5
+  const intereses = movements
+    .filter((mov) => mov > 0)
+    .map((mov) => (mov * currentAccount.interestRate) / 100)
+    .filter((mov) => mov >= 5)
+    .reduce((acc, cur) => acc + cur, 0)
+  labelSumInterest.textContent = `${intereses.toFixed(2)}€`
+}//json 
+/* calcular y mostrar balance */
+function calcDisplayBalance (movements) {
+  const balance = movements.reduce((acc, mov) => acc + mov, 0)
+  labelBalance.textContent = `${balance}€`
+}
 
+function displayMovements (movements) {
+  containerMovements.innerHTML = ''
   movements.forEach((mov, i) => {
     const type = mov > 0 ? 'deposit' : 'withdrawal'
     const html = `
@@ -100,8 +138,31 @@ function displayMovements(movements) {
           <div class="movements__value">${mov}€</div>
         </div>
     `
+    containerMovements.insertAdjacentHTML('afterbegin', html)
 
-    containerMovements.innerHTML = html
+    // containerMovements.innerHTML = html
     // insertAdjacentHTML
   })
 }
+//transferencia
+btnTransfer.addEventListener('click', (event) => {
+  event.preventDefault()
+  const amount = Number(inputTransferAmount.value)
+  const receiverAcc = accounts.find(
+    (acc) => acc.username === inputTransferTo.value
+  )
+  inputTransferAmount.value = inputTransferTo.value = ''
+  inputTransferAmount.blur()
+  if (
+    amount > 0 &&
+    receiverAcc &&
+    currentAccount.balance >= amount &&
+    receiverAcc?.username !== currentAccount.username
+  ) {
+    currentAccount.movements.push(-amount)
+    receiverAcc.movements.push(amount)
+    calcDisplaySummary(currentAccount.movements)
+    calcDisplayBalance(currentAccount.movements)
+    displayMovements(currentAccount.movements)
+  }
+})
