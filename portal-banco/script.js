@@ -145,7 +145,7 @@ function displayMovements (movements) {
     // insertAdjacentHTML
   })
 }
-
+/* transferencia */
 btnTransfer.addEventListener('click', (event) => {
   event.preventDefault()
   const amount = Number(inputTransferAmount.value)
@@ -182,11 +182,11 @@ btnLoan.addEventListener('click', (event) => {
   }
   inputLoanAmount.value = ''
 }
+)
 
-/* Close account */
+btnClose.addEventListener('click', function (e) {
+  e.preventDefault()
 
-btnClose.addEventListener('click', (event) => {
-  event.preventDefault()
   if (
     inputCloseUsername.value === currentAccount.username &&
     Number(inputClosePin.value) === currentAccount.pin
@@ -194,17 +194,22 @@ btnClose.addEventListener('click', (event) => {
     const index = accounts.findIndex(
       (acc) => acc.username === currentAccount.username
     )
+    console.log(index)
+    // .indexOf(23)
+
+    // Delete account
     accounts.splice(index, 1)
+
+    // Hide UI
     containerApp.style.opacity = 0
   }
+
   inputCloseUsername.value = inputClosePin.value = ''
+})
 
-
-  /* Sort movements */
-  let sorted = false
-  btnSort.addEventListener('click', (event) => {
-    event.preventDefault()
-    displayMovements(currentAccount.movements, !sorted)
-    sorted = !sorted
-  })
+let sorted = false
+btnSort.addEventListener('click', function (e) {
+  e.preventDefault()
+  displayMovements(currentAccount.movements, !sorted)
+  sorted = !sorted
 })

@@ -95,3 +95,8 @@ button:focus-visible {
     background-color: #f9f9f9;
   }
 }
+
+#map {
+  width: 1000px;
+  height: 200px;
+}
