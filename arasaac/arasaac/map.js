@@ -24,5 +24,6 @@ export const cargarMapa = () => {
     })
     .catch((e) => {
       // do something
+      
     });
 };

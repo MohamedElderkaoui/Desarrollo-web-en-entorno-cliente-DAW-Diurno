@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <!--JavaScript_-->
+    <script>
+        function mapulacionpalabras() {
+          
+            var palabras = new Array()
+            var ventana;
+            var numeropalabras = 0;
+
+            palabras = formu.ara.value.split(" ");
+
+            ventana= window.open("","ventana","width=400,height=400,scrollbars=yes");
+            ventana.document.write("<h1>manipular array</h1>");
+            /*primera palabra*/
+            ventana.document.write("<p>primera palabra: " + palabras[0] + "</p>");
+            /*ultima palabra*/
+            ventana.document.write("<p>ultima palabra: " + palabras[palabras.length - 1] + "</p>");
+            /*numero de palabras*/
+            ventana.document.write("<p>numero de palabras: " + palabras.length + "</p>");
+            /*palabras ordenadas*/  
+            palabras.sort();
+            ventana.document.write("<p>palabras ordenadas: " + palabras + "</p>");
+        }
+    </script>
+</head>
+<body>
+    
+    <h1> 
+        manipular array
+    </h1>
+    <form name="formu">
+        <textarea name="ara" id="ara" cols="30" rows="10"></textarea>
+        <br><br>
+        <input type="button" value="Acertar" onclick="mapulacionpalabras()">
+    </form>
+</body>
+</html>
