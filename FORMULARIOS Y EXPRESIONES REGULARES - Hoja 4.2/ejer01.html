@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- 1.	Crea una aplicación Web que vaya pidiendo al usuario su nombre, apellido, DNI, teléfono y correo electrónico. Comprueba mediante expresiones regulares, que:
+-	Nombre y apellido no estén vacíos y no contengan ningún número.
+-	DNI sea de la forma 8 dígitos + 1 letra.
+-	Teléfono tenga 9 dígitos exclusivamente.
+-	Correo electrónico sea de la forma texto@texto.texto
+
+Cada dato debe ser introducido desde una ventana emergente, que deberá volver a aparecer mientras no sea correcto. Al final, se deben mostrar todos los datos introducidos en el documento Web.
+ -->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function validaNombre(){
+            var nombre = document.getElementById("nombre").value;
+            var patron = /^[a-zA-Z]+$/;
+            if(patron.test(nombre)){
+                return true;
+            }else{
+                alert("Nombre no valido");
+                return false;
+            }
+        }
+        function validaApellido(){
+            var apellido = document.getElementById("apellido").value;
+            var patron = /^[a-zA-Z]+$/;
+            if(patron.test(apellido)){
+                return true;
+            }else{
+                alert("Apellido no valido");
+                return false;
+            }
+        }
+        function validaDni(){
+            var dni = document.getElementById("dni").value;
+            var patron = /^[0-9]{8}[a-zA-Z]$/;
+            if(patron.test(dni)){
+                /* modulo 23 
+                0 T
+                1 R
+                2 W
+                3 A
+                4 G
+                5 M
+                6 Y
+                7 F
+                8 P
+                9 D
+                10 X
+                11 B
+                12 N
+                13 J
+                14 Z
+                15 S
+                16 Q
+                17 V
+                18 H
+                19 L
+                20 C
+                21 K
+                22 E
+                */
+                var letras = "TRWAGMYFPDXBNJZSQVHLCKE";
+                /* pasar dni.substr(0,8) a numero */
+                var numero = 0;
+                for(var i = 0; i < 8; i++){
+                    numero = numero * 10 + parseInt(dni[i]);
+                }
+                var letra = dni[8];
+                if(letras[numero % 23] == letra){
+                    return true;
+                }else{
+                    alert("DNI no valido");
+                    return false;
+                }
+            }else{
+                alert("DNI no valido");
+                return false;
+            }
+        }
+        function validaTelefono(){
+            var telefono = document.getElementById("telefono").value;
+            var patron = /^[0-9]{9}$/;
+            if(patron.test(telefono)){
+                return true;
+            }else{
+                alert("Telefono no valido");
+                return false;
+            }
+        }
+        function validaEmail(){
+            var email = document.getElementById("email").value;
+            var patron = /^[a-zA-Z]+@[a-zA-Z]+\.[a-zA-Z]+$/;
+            if(patron.test(email)){
+                return true;
+            }else{
+                alert("Email no valido");
+                return false;
+            }
+        }
+        function validaTodo(){
+            if(validaNombre() && validaApellido() && validaDni() && validaTelefono() && validaEmail()){
+                return true;
+            }else{
+                return false;
+            }
+        }
+        
+    </script>
+</head>
+<body>
+    <form action="ejer01.php" method="post">
+        <label for="nombre">Nombre</label>
+        <input type="text" name="nombre" id="nombre" onblur="validaNombre()">
+        <br>
+        <label for="apellido">Apellido</label>
+        <input type="text" name="apellido" id="apellido" onblur="validaApellido()">
+        <br>
+        <label for="dni">DNI</label>
+        <input type="text" name="dni" id="dni" onblur="validaDni()">
+        <br>
+        <label for="telefono">Telefono</label>
+        <input type="text" name="telefono" id="telefono" onblur="validaTelefono()">
+        <br>
+        <label for="email">Email</label>
+        <input type="text" name="email" id="email" onblur="validaEmail()">
+        <br>
+        <input type="submit" value="Enviar" onclick="return validaTodo()">
+
+    </form>
+</body>
+</html>

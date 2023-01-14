@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+</head>
+<body>
+    <script>
+        let num = 0;
+        function introduzca() {
+            do {
+                num = parseInt(prompt("introduzca"))
+            } while (num === NaN);
+            return num;// introduzca y pasar int 
+        }
+
+        function operar(a, b) {
+            var texto = "";
+            do {
+                texto = prompt("introduzca la operacion");
+            } while (
+                texto.toUpperCase !== "SUMA".toUpperCase ||//validar si texto es SUMA
+
+                texto.toUpperCase !== "RESTAR".toUpperCase ||//validar si texto es RESTAR
+
+                texto.toUpperCase !== "MUTIPLICAR".toUpperCase ||//validar si texto es MUTIPLICAR
+
+                texto.toUpperCase !== "DIVIDIR".toUpperCase);//validar si texto es DIVIDIR
+
+
+            if (texto.toUpperCase === "SUMA".toUpperCase) {// compueba si texto es 'SUMA'
+                return a + b;
+            } else if (texto.toUpperCase === "RESTAR".toUpperCase) {// compueba si texto es 'RESTAR'
+                return a + b;
+            } else if (texto.toUpperCase === "MUTIPLICAR".toUpperCase) {// compueba si texto es 'MUTIPLICAR'
+                return a * b;
+            } else if (texto.toUpperCase === "RESTAR".toUpperCase) {// compueba si texto es 'DIVIDIR'
+                if (b !== 0) {
+                    return a / b;
+                } else {
+                    return "no puede"
+                }
+            }
+
+
+
+        }
+        var a = 0;
+        a = introduzca();// introduzcir primer numero
+        var b = introduzca();// introduzcir segunda numero
+        var c = 0;
+
+        c = operar(a, b);// hacer operacion
+        var jokok = "top=100,left=100, width=300,height=150", i = 0;
+
+        var mi_ventana = window.open("", "myWindow", jokok);
+        mi_ventana.document.fgColor = "green";
+    mi_ventana.document.write("El sultado de operacion es");
+    mi_ventana.document.write("<br>");
+        mi_ventana.document.write(c);
+
+    
+    mi_ventana.setTimeout(5000);
+    mi_ventana.closed();
+    </script>
+</body>
+</html>

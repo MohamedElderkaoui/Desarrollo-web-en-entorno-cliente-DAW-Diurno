@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="content-type" content="text/html;charset=utf-8">
+		<title>Examen 1ª Evaluación Ejercicio Array impares</title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			
+			// Impares
+			var impares = new Array();
+			var contador = 0; // Inicialización del contador de números totales introducidos.
+			
+			// Otra opción.
+			//i = 0; // Inicialización del índice de números impares.
+			
+			do {		
+				//num = parseInt(prompt("Introduce un número: "));
+				
+				// Si no se introduce un número, se pulsa directamente en "Aceptar" o en "Cancelar", se vuelve a solicitarlo.
+				do {
+					var num = prompt("Introduce un número: ");
+				} while ( (num == null) || (num == "") || (isNaN(num)) );
+				
+				contador++; // Se actualiza el contador.
+				
+				if (num%2 !== 0) { // Si el número introducido es impar, el resto de la división no es 0.
+					
+					impares.push(num); // Este método añade un elemento al último del Array y actualiza su longitud.
+					
+					// Otra opción.
+					//impares[i] = num;
+					//i++; // Se actualiza el índice.
+				}
+				
+			} while (impares.length < 10)
+			
+			//} while (i < 10) // Otra opción.
+			
+			impares.reverse(); // Los números se guardan en orden inverso a su introducción.
+			
+			document.write("El array de números impares es el siguiente:<br>" + impares.join(" - ")); // Este método separa los elementos como se le indica.
+			document.write("<br>La cantidad total de números introducidos son: " + contador);
+			
+		</script>
+	</body>
+</html>

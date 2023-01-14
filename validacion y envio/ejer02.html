@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+     <script>
+        function validaEmail(){
+            var email = document.getElementById("email").value;
+            var patron = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+            if(patron.test(email)){
+                return true;
+            }else{
+                alert("Email no valido");
+                return false;
+            }
+        }
+        function validaTelefono(){
+            var telefono = document.getElementById("telefono").value;
+            var patron = /^[0-9]{9}$/;
+            if(patron.test(telefono)){
+                return true;
+            }else{
+                alert("Telefono no valido");
+                return false;
+            }
+        }
+        function validaDni(){
+            var dni = document.getElementById("dni").value;
+            var patron = /^[0-9]{8}[a-zA-Z]$/;
+            if(patron.test(dni)){
+                /* modulo 23 
+                0 T
+                1 R
+                2 W
+                3 A
+                4 G
+                5 M
+                6 Y
+                7 F
+                8 P
+                9 D
+                10 X
+                11 B
+                12 N
+                13 J
+                14 Z
+                15 S
+                16 Q
+                17 V
+                18 H
+                19 L
+                20 C
+                21 K
+                22 E
+                */
+                var letras = "TRWAGMYFPDXBNJZSQVHLCKE";
+                /* pasar dni.substr(0,8) a numero */
+                var numero = 0;
+                try{
+                    numero = parseInt(dni.substr(0,8));
+                    if (isNaN(numero)){
+                        throw "DNI no valido";
+                    }
+                }catch(e){
+                    alert("DNI no valido");
+                    return false;
+                }
+                var letra = dni.substr(8,1);
+                numero = numero % 23;
+                letra = letra.toUpperCase();
+                if(letras.charAt(numero) == letra){
+                    return true;
+                }else{
+                    alert("Letra no valida");
+                    return false;
+                }
+            }else{
+                alert("DNI no valido");
+                return false;
+            }
+        }
+        function validaTodo(){
+            if(validaEmail() && validaTelefono() && validaDni()){
+                alert("Todo correcto");
+            }else{
+                alert("Algo no es correcto");
+            }
+        }
+
+     </script>
+</head>
+<body>
+    <form action="ejer02.php" method="post">
+        <!-- email, telefono, dni
+         -->
+        <!-- email -->
+        <label for="email">Email</label>
+        <input type="email" name="email" id="email" onchange=" return   validaEmail()"> <br>
+        <!-- telefono -->
+        <label for="telefono">Telefono</label>
+        <input type="tel" name="telefono" id="telefono" onchange="return validaTelefono()"> <br>
+        <!-- dni -->
+        <label for="dni">DNI</label>
+        <input type="text" name="dni" id="dni" onchange=" return validaDni()"> <br>
+        <!-- guardar y enviar -->
+        <input type="submit" value="Guardar" onclick="validaTodo()"> <br>
+         <br>
+    </form>
+</body>
+</html>

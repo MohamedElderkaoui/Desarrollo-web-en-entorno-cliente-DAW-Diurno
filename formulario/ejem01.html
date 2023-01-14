@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /*
+        fondo amarillo
+        */
+        .amarillo {
+            background-color: yellow;
+        }
+        /*
+        borde inferior en rojo
+        
+        */
+        .red_botton_border {
+            border-bottom: 1px solid red 
+        }
+    </style>
+</head>
+<body>
+    <form action="pagina.php" method="post" enctype="multipart/form-data" /><br />
+    Nombre: <input type="text" class="amarillo" name="nombre" value="" size="42" maxlength="30" /><br />
+    Apellidos: <input type="text" name="apellidos" value="" size="40" maxlength="80" /><br />
+    DNI: <input type="text" name="dni" value="" size="10" maxlength="9" /><br />
+    Sexo:<br />
+    <input type="radio" name="sexo" value="hombre" checked="checked" />Hombre<br />
+    <input type="radio" name="sexo" value="mujer" />Mujer<br />
+    Incluir mi foto:<input type="file" name="foto" /><br />
+    <input name="publicidad" type="checkbox" value="publicidad" checked="checked" />
+    Enviar publicidad<br />
+    <input type="submit" name="enviar"  class="red_botton_border          "value="Guardar cambios" />
+    <input type="reset" name="limpiar" value="Borrar los datos introducidos" />
+    </form>
+
+</body>
+</html>

@@ -41,15 +41,11 @@
     </script>
 </head>
 <body>
-    <script>
-        var dimensiones = tamanoVentanaNavegador();
-        var ancho = dimensiones[0];
-        var alto = dimensiones[1];
-        document.write("<div style='width:" + ancho/2 + "px; height:" + alto/2 + "px; background-color:red;' onclick='coordenadas(event)'></div>");
-        document.write("<div style='width:" + ancho/2 + "px; height:" + alto/2 + "px; background-color:yellow;' onclick='coordenadas(event)'></div>");
-        document.write("<div style='width:" + ancho/2 + "px; height:" + alto/2 + "px; background-color:blue;' onclick='coordenadas(event)'></div>");
-        document.write("<div style='width:" + ancho/2 + "px; height:" + alto/2 + "px; background-color:green;' onclick='coordenadas(event)'></div>");
-        
-    </script>
+    <div class="content">
+        <div class="cuadrado" style="background-color: red; width: 50%; height: 50%;" onclick="coordenadas(event)"></div>
+        <div class="cuadrado" style="background-color: yellow; width: 50%; height: 50%;" onclick="coordenadas(event)"></div>
+        <div class="cuadrado" style="background-color: blue; width: 50%; height: 50%;" onclick="coordenadas(event)"></div>
+        <div class="cuadrado" style="background-color: green; width: 50%; height: 50%;" onclick="coordenadas(event)"></div>
+    </div>
 </body>
 </html>

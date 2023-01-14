@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+</head>
+<body>
+    <script>
+        {/* declaro lavariable numero_impar */ }
+
+        var numero_impar = 0;
+        var array = new Array();
+        var numero = 0;
+        do {
+            numero = parseInt(prompt("introduzca un numero")) /// por alert  introduzca un numero
+            array.push(numero);//Añade nuevos elementos al final de un array
+            if (numero % 2 !== 0) {///si es impar
+
+                numero_impar += 1;//suma
+            }
+        } while (numero_impar == 10);
+
+        for (let i = array.length - 1; i > -1; i--) {
+            var element = array[i];//recoger los numeros
+            document.write(element + ",");// imprimir por plantalla
+        }
+    </script>
+</body>
+</html>

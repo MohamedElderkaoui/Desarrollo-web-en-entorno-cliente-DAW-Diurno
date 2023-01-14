@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!--2.	Crea un formulario, el cual pedirá al usuario su nombre, apellido, teléfono, correo electrónico y DNI. Comprueba mediante expresiones regulares y lanzando ventanas emergentes, que:
+-	Nombre y apellido no estén vacíos y no contengan ningún número.
+-	Teléfono tenga 9 dígitos exclusivamente.
+-	Correo electrónico sea de la forma texto@texto.texto
+-	DNI sea de la forma 8 dígitos + 1 letra.
+-	Coloca el foco en el segundo elemento del formulario por defecto (apellido).
+ 
+
+La validación se debe hacer mediante clases asociadas a los elementos del formulario.  Por ejemplo:
+<input type="text" id="nombre" name="nombre" class="requerido noNumeros" />
+  -->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function validaNombre(){
+            var nombre = document.getElementById("nombre").value;
+            var patron = /^[a-zA-Z]+$/;
+            if(patron.test(nombre)){
+                return true;
+            }else{
+                alert("Nombre no valido");
+                return false;
+            }
+        }
+        function validaApellido(){
+            var apellido = document.getElementById("apellido").value;
+            var patron = /^[a-zA-Z]+$/;
+            if(patron.test(apellido)){
+                return true;
+            }else{
+                alert("Apellido no valido");
+                return false;
+            }
+        }
+        function validaTelefono(){
+            var telefono = document.getElementById("telefono").value;
+            var patron = /^[0-9]{9}$/;
+            if(patron.test(telefono)){
+                return true;
+            }else{
+                alert("Telefono no valido");
+                return false;
+            }
+        }
+        function validaCorreo(){
+            var correo = document.getElementById("correo").value;
+            var patron = /^[a-zA-Z]+@[a-zA-Z]+.[a-zA-Z]+$/;
+            if(patron.test(correo)){
+                return true;
+            }else{
+                alert("Correo no valido");
+                return false;
+            }
+        }
+        function validaDni(){
+            var dni = document.getElementById("dni").value;
+            var patron = /^[0-9]{8}[a-zA-Z]$/;
+            if(patron.test(dni)){
+                /* modulo 23 
+                0 T
+                1 R
+                2 W
+                3 A
+                4 G
+                5 M
+                6 Y
+                7 F
+                8 P
+                9 D
+                10 X
+                11 B
+                12 N
+                13 J
+                14 Z
+                15 S
+                16 Q
+                17 V
+                18 H
+                19 L
+                20 C
+                21 K
+                22 E
+                */
+                var letras = "TRWAGMYFPDXBNJZSQVHLCKE";
+                var letra = dni.charAt(8);
+                var numero = dni.substring(0,8);
+                var modulo = numero % 23;
+                var letraCorrecta = letras.charAt(modulo);
+                if(letraCorrecta == letra){
+                    return true;
+                }else{
+                    alert("Dni no valido");
+                    return false;
+                }
+            }else{
+                alert("Dni no valido");
+                return false;
+            }
+        }
+        function validaFormulario(){
+            if(validaNombre() && validaApellido() && validaTelefono() && validaCorreo() && validaDni()){
+                return true;
+            }else{
+                return false;
+            }
+        }
+
+    </script>
+</head>
+<body>
+<form action="">
+    <fieldset>
+        <legend>Formulario</legend>
+        <label for="nombre">Nombre</label>
+        <input type="text" id="nombre" name="nombre" class="requerido noNumeros"  onblur="validaNombre()">
+        <br>
+        <label for="apellido">Apellido</label>
+        <input type="text" id="apellido" name="apellido" class="requerido noNumeros" onblur="validaApellido()">
+        <br>
+        <label for="telefono">Telefono</label>
+        <input type="text" id="telefono" name="telefono" class="requerido noNumeros" onblur="validaTelefono()">
+        <br>
+        <label for="correo">Correo</label>
+        <input type="text" id="correo" name="correo" class="requerido noNumeros" onblur="validaCorreo()">
+        <br>
+        <label for="dni">DNI</label>
+        <input type="text" id="dni" name="dni" class="requerido noNumeros" onblur="validaDni()">
+        <br>
+        <input type="submit" value="Enviar" onclick="return validaFormulario()">
+    </fieldset>
+</form>    
+</body>
+</html>

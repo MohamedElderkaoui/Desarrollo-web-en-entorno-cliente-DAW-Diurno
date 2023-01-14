@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="content-type" content="text/html;charset=utf-8">
+		<title>Examen 1ª Evaluación Ejercicio Objeto usuario</title>
+		<script>
+			
+			function cargarDatos() {
+				var nombre = prompt("Ingrese su nombre: ", "");
+				var apellidos = prompt("Ingrese su apellido: ", "");
+				
+				//var saldo = prompt("Ingrese el saldo: ", "");
+				
+				// Si no se introduce un número, se pulsa directamente en "Aceptar" o en "Cancelar", se vuelve a solicitarlo.
+				do {
+					var saldo = prompt("Ingrese el saldo: ", "");
+				} while ( (saldo == null) || (saldo == "") || (isNaN(saldo)) );
+				
+				var cuenta = new CuentaBancaria(nombre, apellidos, saldo); // Creación e inicialización de la instancia "cuenta" perteneciente al objeto "CuentaBancaria".
+				
+				cuenta.mostrarDatos(); // Llamada al método "mostrarDatos" de la instancia "cuenta" perteneciente al objeto "CuentaBancaria".
+			}
+			
+			function CuentaBancaria (nombre, apellidos, saldo) { // Definición o declaración del objeto "CuentaBancaria".
+				this.nombreTitular = nombre; // Propiedad del objeto "CuentaBancaria". Para la creación de las propiedades se utiliza "this".
+				this.apellidosTitular = apellidos;
+				this.saldo = saldo;
+				
+				this.mostrarDatos = mostrarDatos; // Función "mostrarDatos" incluida como método en la definición del objeto "CuentaBancaria".
+			}
+			
+			function mostrarDatos() { // Método "mostrarDatos" del objeto "CuentaBancaria".
+				var msg = 'Ha creado una cuenta bancaria. ';
+					msg = msg + 'Los datos de la cuenta son Nombre: ' + this.nombreTitular;
+					msg = msg + '; Apellidos: ' + this.apellidosTitular + '; Saldo: ' + this.saldo;
+				
+				alert(msg);
+			}
+			
+		</script>
+	</head>
+	<body>
+		<div>
+			<input type=button value="Crear cuenta bancaria" onClick="cargarDatos();">
+		</div>
+	</body>
+</html>

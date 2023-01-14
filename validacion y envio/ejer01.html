@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+        /*nombre, telefono, dia, mes, año, validacion*/
+        /*nombre*/
+        /* si es vacio o longitud igual a 0*/
+        function validaNombre(nombre){
+            if(nombre.length == 0 || nombre == null || nombre == ""){
+                alert("El nombre no puede estar vacio");
+                return false;
+            }
+        }
+        /*telefono*/
+        function validaTelefono(telefono){
+            if(telefono.length == 0 || telefono == null || telefono == ""){
+                alert("El telefono no puede estar vacio");
+                return false;
+            }
+        }
+        /*dia*/
+        function validaDia(dia){
+            if(dia.length != 0 || dia != null || dia != "" || !isNaN(dia)){
+                alert("El dia no puede estar vacio");
+                return false;
+            }
+        }
+        /*mes*/
+        function validaMes(mes){
+            if(mes.length == 0 || mes == null || mes == "" ||!isNaN(mes)){
+                alert("El mes no puede estar vacio");
+                return false;
+            }
+        }
+        /*año*/
+        function validaAño(año){
+            if(año.length == 0 || año == null || año == "" || !isNaN(año)){
+                alert("El año no puede estar vacio");
+                return false;
+            }
+        }
+        /* fecha */
+        function validaFecha(){
+           if (validaDia(dia) != false && validaMes(mes) != false && validaAño(año) != false){
+               var fecha = new Date(año, mes, dia);
+               if (isNaN(fecha)){
+                   alert("La fecha es correcta");
+                   return false;
+
+                }
+              }
+        }
+        /*validacion*/
+        function validaValidacion() {
+            var validacion = document.getElementById("validacion"); 
+            if(validacion.checked == false){
+                alert("Debe aceptar las condiciones");
+                return false;
+            }
+        }
+        /*envio*/
+        function envia(form){
+            if(validaNombre(nombre) != false && validaTelefono(telefono) != false && validaFecha() != false && validaValidacion() != false){
+                form.submit();
+                return true;
+            }
+        }
+         </script>
+  </head>
+  <body>
+    <form action="">
+      <!-- nombre -->
+      <label for="nombre">Nombre</label>
+      <input type="text" name="nombre" id="nombre" onchange="validaNombre(this.value)" />
+      <br>
+      <!-- telefono -->
+      <label for="telefono">Telefono</label>
+      <input type="text" name="telefono" id="telefono" /> 
+      <br>  
+      <!-- dia mes año -->
+      <label for="dia">Dia</label>
+      <input type="text" name="dia" id="dia" />
+      <label for="mes">Mes</label>
+      <input type="text" name="mes" id="mes" />
+      <label for="año">Año</label>
+      <input type="text" name="año" id="año" onchange="validaFecha()" />
+        <br>    
+      <!-- validacion -->
+      <label for="validacion">Validacion</label>
+      <!-- checkbox -->
+        <input type="checkbox" name="validacion" id="validacion" onchange="validaValidacion()" />
+    <!-- 
+        submit 
+     -->
+    <br>
+         <input type="submit" value="enviar" onclick="envia(this.form) == true" />
+    </form>
+  </body>
+</html>

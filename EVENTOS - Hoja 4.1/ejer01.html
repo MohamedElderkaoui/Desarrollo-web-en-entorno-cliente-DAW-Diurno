@@ -5,29 +5,58 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <script>
-        /*
-        1.	Crea un programa Web que muestre las coordenadas del ratón dentro del navegador y dentro de la página en la que estamos. Deben quedar claras las diferencias entre las propiedades “screen”, “page” y “client” del evento.
-        */
-        function coordenadas(event) {
-            document.write("Coordenadas del ratón dentro del navegador: " + event.screenX + ", " + event.screenY + "<br>");
-            document.write("Coordenadas del ratón dentro de la página: " + event.pageX + ", " + event.pageY + "<br>");
-            document.write("Coordenadas del ratón dentro del área visible: " + event.clientX + ", " + event.clientY + "<br>");
-        }
-        
-    </script>
+<script>
+    /*
+    2.	Crea un programa Web que muestre las coordenadas del ratón dentro del navegador y dentro de la página en la que estamos. Deben quedar claras las diferencias entre las propiedades “screen”, “page” y “client” del evento.
+    */
+    function coorx1(e) {
+        document.getElementById("coorx1").innerHTML = e.screenX;
+    }
+    function coory1(e) {
+        document.getElementById("coory1").innerHTML = e.screenY;
+    }
+    function coorx2(e) {
+        document.getElementById("coorx2").innerHTML = e.pageX;
+    }
+    function coory2(e) {
+        document.getElementById("coory2").innerHTML = e.pageY;
+    }
+
+    function coorx3(e) {
+        document.getElementById("coorx3").innerHTML = e.clientX;
+    }
+    function coory3(e) {
+        document.getElementById("coory3").innerHTML = e.clientY;
+    }
+</script>
+<style>
+    .conten {
+        /* height es tamaño de la ventana */
+        height: 100vh;
+        /* width es tamaño de la ventana */
+        width: 100vw;
+        margin: 0 auto;
+        padding: 0px;
+        border: 1px solid #000;
+    }
+</style>
 </head>
-<body>
-    <div style="width: 100%; height: 100vh; background-color: red;" onmousemove="coordenadas(event)"></div>
-    <script>
-        /*
-        2.	Crea un programa Web que muestre las coordenadas del ratón dentro del navegador y dentro de la página en la que estamos. Deben quedar claras las diferencias entre las propiedades “screen”, “page” y “client” del evento.
-        */
-        function coordenadas(event) {
-            document.write("Coordenadas del ratón dentro del navegador: " + event.screenX + ", " + event.screenY + "<br>");
-            document.write("Coordenadas del ratón dentro de la página: " + event.pageX + ", " + event.pageY + "<br>");
-            document.write("Coordenadas del ratón dentro del área visible: " + event.clientX + ", " + event.clientY + "<br>");
-        }
-    </script>
+<!-- 
+    se aplicar en toda la plantalla
+ -->
+<body onmousemove="coorx1(event);coory1(event);coorx2(event);coory2(event);coorx3(event);coory3(event);">
+ <div class="conten">
+    <form action="">
+        <p>Coordenadas del ratón dentro del navegador</p>
+        <p>Coordenada X: <span id="coorx1"></span></p>
+        <p>Coordenada Y: <span id="coory1"></span></p>
+        <p>Coordenadas del ratón dentro de la página</p>
+        <p>Coordenada X: <span id="coorx2"></span></p>
+        <p>Coordenada Y: <span id="coory2"></span></p>
+        <p>Coordenadas del ratón dentro de la plantalla</p>
+        <p>Coordenada X: <span id="coorx3"></span></p>
+        <p>Coordenada Y: <span id="coory3"></span></p>
+    </form>
+ </div>
 </body>
 </html>

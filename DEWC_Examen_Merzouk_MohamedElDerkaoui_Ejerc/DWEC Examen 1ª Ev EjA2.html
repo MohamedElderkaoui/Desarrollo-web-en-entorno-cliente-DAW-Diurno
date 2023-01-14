@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="content-type" content="text/html;charset=utf-8">
+		<title>Examen 1ª Evaluación Ejercicio Calculadora de números enteros y decimales</title>
+		<script type="text/javascript">
+			
+			// Una función por cada operación matemática.
+			// "parseFloat" sirve para enteros y decimales.
+			
+			function sumar(num1, num2) {
+				resultado = parseFloat(num1) + parseFloat(num2);
+				imprimir(resultado);
+				//alert("La suma de los valores es: " + (parseFloat(num1) + parseFloat(num2)));
+			}
+			
+			function restar(num1, num2) {
+				resultado = parseFloat(num1) - parseFloat(num2);
+				imprimir(resultado);
+				//alert("La resta de los valores es: " + (parseFloat(num1) - parseFloat(num2)));
+			}
+			
+			function multiplicar(num1, num2) {
+				resultado = parseFloat(num1) * parseFloat(num2);
+				imprimir(resultado);
+				//alert("La multiplicación de los valores es: " + (parseFloat(num1) * parseFloat(num2)));
+			}
+			
+			function dividir(num1, num2) {
+				resultado = parseFloat(num1) / parseFloat(num2);
+				imprimir(resultado);
+				//alert("La división de los valores es: " + (parseFloat(num1) / parseFloat(num2)));
+			}
+			
+			function imprimir(resultado) {
+				var opciones = "left=800, top=400, width=300, height=150", i=0;
+				ventana = window.open("", "", opciones);
+				
+				ventana.document.write("<br>" + "El resultado de la operación es: " + "<br>" + "<br>" + resultado);
+				//alert("El resultado de la operación es: " + resultado);
+				
+				ventana.document.title = "CALCULADORA"; // Título ventana secundaria.
+				
+				ventana.document.bgColor = "yellow"; // Color ventana secundaria.
+				ventana.document.fgColor = "green"; // Color fuente secundaria.
+				
+				setTimeout("ventana.close()", 5000); // La ventana se cierra a los 5 seg de aparecer.
+				setTimeout("location.reload()", 5000); // Vuelve a cargar la página Web a los 5 seg de aparecer el resultado.
+			}
+			
+		</script>
+	</head>
+	<body>
+		<script type="text/javascript">
+			
+			// Si no se introduce un número, se pulsa directamente en "Aceptar" o en "Cancelar",
+			// se vuelve a solicitarlo.
+			do {
+				var input1 = prompt("Introduce el primer valor: ");
+			} while ( (input1 == null) || (input1 == "") || (isNaN(input1)) );
+			
+			do {
+				var input2 = prompt("Introduce el segundo valor: ");
+			} while ( (input2 == null) || (input2 == "") || (isNaN(input2)) );
+			
+			// Si no se introduce una de las cuatro operaciones, se vuelve a solicitarla.
+			do {
+				var operacion = prompt("Introduce la operación a realizar (sumar, restar, multiplicar, dividir): ");
+				operacion = operacion.toUpperCase(); // Convierte una cadena en mayúsculas.
+			} while ( (operacion !== "SUMAR") && (operacion !== "RESTAR") && (operacion !== "MULTIPLICAR") && (operacion !== "DIVIDIR") );
+			
+			// Selección de la función a ejecutar según el "string" introducido.
+			switch (operacion) {
+			
+			case "SUMAR":
+				sumar(input1, input2);
+			break;
+			
+			case "RESTAR":
+				restar(input1, input2);
+			break;
+			
+			case "MULTIPLICAR":
+				multiplicar(input1, input2);
+			break;
+			
+			case "DIVIDIR":
+				dividir(input1, input2);
+			break;
+			
+			default:
+				alert("La operación introducida no es válida.");
+			
+			}
+			
+		</script>
+	</body>
+</html> 
