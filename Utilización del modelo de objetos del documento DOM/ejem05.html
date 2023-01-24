@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function f(){
+            document.getElementById("caja").innerHTML = "hola mundo";
+            alert("contenido de la caja cambiado" + document.getElementById("caja").innerHTML);
+        }
+
+    </script>
+</head>
+<body>
+    <div id="caja">
+        <p>
+            esto es un div con un id que es caja
+        </p>
+    </div>
+    <input type="button" value="" onclick="f()">
+<script>
+    var contenido = document.getElementById("caja").innerHTML;
+    alert("contenido de la caja" + contenido);
+</script>
+</body>
+</html>
