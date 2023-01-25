@@ -1,0 +1,31 @@
+<!-- 1.	Realiza una página Web con un enlace. Al pulsar sobre el enlace se debe mostrar el segundo atributo del enlace y su valor mediante dos ventanas de alerta.
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>Ejercicio JavaScript DOM sin manejadores semánticos</title>
+	</head>
+	<body>
+		<a href="#" id="id_link" title="Enlace de prueba">Pulsa aquí</a>
+	</body>
+</html>
+ -->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>Ejercicio JavaScript DOM sin manejadores semánticos</title>
+    
+</head>
+<body>
+    <a href="#" id="id_link" title="Enlace de prueba">Pulsa aquí</a>
+    <script>
+        function f() {
+            alert("El atributo title tiene el valor: " + document.getElementById("id_link").title);
+        }
+        /*document.getElementById( "id_link" ).onclick = f();*/
+        document.getElementById("id_link").onclick = f;
+    </script>
+</body>
+</html>

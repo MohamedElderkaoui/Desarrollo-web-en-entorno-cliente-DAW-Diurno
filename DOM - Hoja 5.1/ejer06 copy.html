@@ -1,0 +1,53 @@
+<!-- 1.	Realiza una página Web con un enlace. Al pulsar sobre el enlace se debe mostrar el segundo atributo del enlace y su valor mediante dos ventanas de alerta.
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>Ejercicio JavaScript DOM sin manejadores semánticos</title>
+	</head>
+	<body>
+		<a href="#" id="id_link" title="Enlace de prueba">Pulsa aquí</a>
+	</body>
+</html>
+ -->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>Enlace de prueba</title>
+    
+</head>
+<body>
+    <a href="#" id="id_link" title="Enlace de prueba" onmouseover="f()">Pulsa aquí</a>
+    <script>
+        function f() {
+            alert("El atributo title tiene el valor: " + document.getElementById("id_link").title);
+            /*
+            4.	Clicking on the link of the second exercise must change the page title
+              "enlace de prueba" to "Enlace de prueba 2"
+            */
+            document.title = "Enlace de prueba 2";
+/*anterior para que al pasar el ratón por el enlace aparezca el texto “Has pasado el ratón por el enlace” colocado a la derecha del enlace. Si se pulsa sobre el enlace se cambiarán las siguientes propiedades del texto adicional: color (#0101ff) y font-weight (bold).*/
+            document.getElementById("id_link").onmouseover = function() {
+                document.getElementById("id_link").innerHTML = "Has pasado el ratón por el enlace";
+            }
+            document.getElementById("id_link").onmouseout = function() {
+                document.getElementById("id_link").innerHTML = "Pulsa aquí";
+            }
+            document.getElementById("id_link").onclick = function() {
+                document.getElementById("id_link").style.color = "#0101ff";
+                document.getElementById("id_link").style.fontWeight = "bold";
+            }
+            /*1.	Modifica el ejercicio anterior para que se inserte el texto <h3>Enlace pulsado</h3> en una línea anterior al enlace, cuando el enlace sea pulsado una sola vez./*/
+            document.getElementById("id_link").onclick = function() {
+               if (document.getElementById("id_link").onclick) {
+                   document.getElementById("id_link").innerHTML = "<h3>Enlace pulsado</h3>";
+               }
+            }
+        }
+        /*document.getElementById( "id_link" ).onclick = f();*/
+        document.getElementById("id_link").onclick = f;
+    </script>
+</body>
+</html>
