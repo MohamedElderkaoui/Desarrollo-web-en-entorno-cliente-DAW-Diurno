@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<!-- 1.	Completa el ejercicio para que si se pulsa un botón más de 5 veces, salga el mensaje por consola: "Se ha pulsado al botón más de 5 veces".
+Puedes ayudarte del archivo adjunto.
+ -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var contador = 0;
+        function f() {
+            contador++;
+            if (contador > 5) {
+               alert("Se ha pulsado al botón más de 5 veces");
+            }
+        }
+    </script>
+    <p>
+        <button id="id_boton" onclick="f()">Pulsa aquí</button>
+    </p>
+    
+</body> 
+</html>

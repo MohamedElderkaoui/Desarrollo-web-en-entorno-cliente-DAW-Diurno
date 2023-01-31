@@ -1,0 +1,40 @@
+<!-- 
+    2.	Crea un formulario con una caja de texto (elemento <input>) y un botón con el texto “Añadir más cajas”. Cada vez que se pulse al botón se debe añadir una nueva caja de texto. Otro botón con el texto “Reiniciar” debe volver a empezar.
+ -->
+ <!DOCTYPE html>
+ <html lang="en">
+ <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- 
+        2.	Crea un formulario con una caja de texto (elemento <input>) y un botón con el texto “Añadir más cajas”. Cada vez que se pulse al botón se debe añadir una nueva caja de texto. Otro botón con el texto “Reiniciar” debe volver a empezar.
+     -->
+       
+ </head>
+ <body>
+    <form action="">
+        <input type="text" name="caja" id="caja">
+        <button type="button" onclick="f()">Añadir más cajas</button>
+        <button type="button" onclick="deleteAll()">Reiniciar</button>
+    </form>
+    <!-- ”. Each time the button is clicked a new text box should be added. Another button with the text “Restart” should start over. -->
+    <script>
+        function f() {
+            var caja = document.createElement("input");
+            caja.setAttribute("type", "text");
+            caja.setAttribute("name", "caja");
+            caja.setAttribute("id", "caja");
+            document.body.appendChild(caja);
+        }
+        function deleteAll() {
+            var cajas = document.getElementsByName("caja");
+            for (var i = 0; i < cajas.length; i++) {
+                document.body.removeChild(cajas[i]);
+            }
+        }
+    </script>
+
+ </body>
+ </html>

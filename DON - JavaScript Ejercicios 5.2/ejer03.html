@@ -1,0 +1,54 @@
+<!-- 3.	Divide la pantalla en 4 zonas iguales con colores rojo, amarillo, azul y verde. Al pulsar sobre una de ellas, deberá aparecer un “alert” que indique el color del área sobre la que se ha hecho “click”.
+Debes dividir los cuadrantes usando “capas” (con una clase). Por ejemplo:
+<div id="rojo" class="capa"></div>
+ -->
+ <!DOCTYPE html>
+ <html lang="en">
+ <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .cuadrantes {
+         /* all of screen */
+            width: 100vw;
+            height: 100vh;
+            display: grid;
+            grid-template-columns: 50% 50%;
+            grid-template-rows: 50% 50%;
+        }
+        .capa {
+            width: 100%;
+            height: 100%;
+        }
+        #rojo {
+            background-color: red;
+        }
+        #amarillo {
+            background-color: yellow;
+        }
+        #azul {
+            background-color: blue;
+        }
+        #verde {
+            background-color: green;
+        }
+    </style>
+ </head>
+ <body>
+    <div id="cuadrantes" class="cuadrantes">
+        <div id="rojo" class="capa"></div>
+        <div id="amarillo" class="capa"></div>
+        <div id="azul" class="capa"></div>
+        <div id="verde" class="capa"></div>
+    </div>
+    <script>
+        var cuadrantes = document.getElementById("cuadrantes");
+        cuadrantes.addEventListener("click", function(e) {
+            var color = e.target.id;
+            alert("Has pulsado el cuadrante " + color);
+        });
+    </script>
+ </body>
+ </html>

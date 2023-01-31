@@ -1,0 +1,44 @@
+<!-- 1.	Crea una lista y un botón de forma que cada vez que pulsemos el botón añadamos a la lista dos elementos más (especificados en el código HTML). Incluye otro botón que añada los elementos una sola vez pero usando un gestor de eventos. -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- 1.	Crea una lista y un botón de forma que cada vez que pulsemos el botón añadamos a la lista dos elementos más (especificados en el código HTML). Incluye otro botón que añada los elementos una sola vez pero usando un gestor de eventos. -->
+    <Script>
+        function f() {
+            var lista = document.getElementById("lista");
+            var elemento1 = document.createElement("li");
+            var elemento2 = document.createElement("li");
+            elemento1.innerHTML = "Elemento 1";
+            elemento2.innerHTML = "Elemento 2";
+            lista.appendChild(elemento1);
+            lista.appendChild(elemento2);
+        }
+        function f2() {
+            var lista = document.getElementById("lista");
+            var elemento1 = document.createElement("li");
+            var elemento2 = document.createElement("li");
+            elemento1.innerHTML = "Elemento 1";
+            elemento2.innerHTML = "Elemento 2";
+            lista.appendChild(elemento1);
+            lista.appendChild(elemento2);
+            document.getElementById("id_boton2").removeEventListener("click", f2);
+        }
+    </Script>
+</head>
+<body>
+    <p>
+        <button id="id_boton" onclick="f()">Pulsa aquí</button>
+    </p>
+    <p>
+        <button id="id_boton2" onclick="f2()">Pulsa aquí</button>
+    </p>
+    <ul id="lista">
+        <li>Elemento 1</li>
+        <li>Elemento 2</li>
+    </ul>
+</body>
+</html>
