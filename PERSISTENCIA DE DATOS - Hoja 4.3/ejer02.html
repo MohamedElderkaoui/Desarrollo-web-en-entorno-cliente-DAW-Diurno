@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <!-- 
+2.	un botón. Cuando se pulse el botón, en una línea se mostrará el número de veces que se ha pulsado dicho botón durante la sesión del navegador (una ventana), y en otra línea se mostrará el número de veces que se ha pulsado desde siempre (múltiples ventanas).
+Prueba a abrir la página en otra ventana nueva, ¿qué valores tendrán los dos contadores?
+Prueba a abrir la página en otro navegador, ¿qué valores tendrán los dos contadores?
+
+ -->
+</head>
+<body>
+  
+    <script>
+        var contador = 0;
+        var contador2 = 0;
+        /*
+        comentario: contadorº es el contador de la sesión actual y contador2 es el contador de todas las sesiones
+        */
+        if (document.cookie != "") {
+            var cookies = document.cookie.split(";");//separo las cookies por ;
+            for (var i = 0; i < cookies.length; i++) {//recorro el array de cookies
+                var cookie = cookies[i].split("=");//separo el nombre de la cookie del valor
+                if (cookie[0] == "contador") {
+                    contador = parseInt(cookie[1]);
+                }
+                if (cookie[0] == "contador2") {
+                    contador2 = parseInt(cookie[1]);
+                }
+            }
+        }
+        contador++;//incremento el contador de la sesión actual
+        contador2++;
+        document.cookie = "contador=" + contador + ";";
+        document.cookie = "contador2=" + contador2 + ";";
+        document.write("Has pulsado el botón " + contador + " veces en esta sesión");
+        document.write("<br>");
+        document.write("Has pulsado el botón " + contador2 + " veces desde siempre");
+    </script>
+    <button onclick="location.reload()">Pulsa aquí</button> <!-- al pulsar el botón se recarga la página y se ejecuta el script de nuevo -->
+
+    
+</body>
+</html>

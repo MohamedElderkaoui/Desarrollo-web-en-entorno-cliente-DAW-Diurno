@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+</head>
+<body>
+    <!-- 
+        1.	Mediante una cookie, haz que al acceder a una página Web nos diga cuántas veces has accedido a dicha página en los últimos 3 días. Almacena dicha información en la cookie.
+     -->
+     <script>
+        var fecha = new Date();
+        var fechaActual = fecha.getTime();
+        var fechaCaducidad = fechaActual + 3*24*60*60*1000;
+        var fechaCaducidad = new Date(fechaCaducidad);
+        var contador = 0;
+        if (document.cookie != "") {
+            var cookies = document.cookie.split(";");
+            for (var i = 0; i < cookies.length; i++) {
+                var cookie = cookies[i].split("=");
+                if (cookie[0] == "contador") {
+                    contador = parseInt(cookie[1]);
+                }
+            }
+        }
+        contador++;
+        document.cookie = "contador=" + contador + ";expires=" + fechaCaducidad.toUTCString();
+        document.write("Has accedido " + contador + " veces en los últimos 3 días");
+        document.cookie = "contador=" + contador + ";expires=" + fechaCaducidad.toUTCString();
+        document.write("Has accedido " + contador + " veces en los últimos 3 días");
+            document.cookie = "contador=" + contador + ";expires=" + fechaCaducidad.toUTCString();
+    </script>
+
+
+</body>
+</html>
