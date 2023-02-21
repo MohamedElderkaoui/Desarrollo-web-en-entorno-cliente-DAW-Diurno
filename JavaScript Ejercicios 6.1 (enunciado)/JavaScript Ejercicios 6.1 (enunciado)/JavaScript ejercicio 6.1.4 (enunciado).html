@@ -100,5 +100,26 @@
 				});
 			});
 		</script>
+		<!-- 
+			3.	Vuelve a editar el primer archivo. En este caso, al pulsar en el botón, los párrafos pares deben desaparecer. Pero si se vuelve a pulsar, deben aparecer de nuevo.
+		 -->
+<script>
+			$(document).ready(function(){
+				$("button").click(function(){
+					$("p:even").toggle();
+				});
+			});
+</script>
+
+<!-- 
+	4.	Vuelve a editar el primer archivo. En este caso, los párrafos impares deben desaparecer lentamente, de forma que vayan perdiendo opacidad. Al volver a pulsar, deberán ganar opacidad a la misma velocidad.
+-->
+<script>
+			$(document).ready(function(){
+				$("button").click(function(){
+					$("p:odd").toggle("slow");
+				});
+			});
+</script>
 	</body>
 </html>

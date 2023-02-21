@@ -15,7 +15,14 @@
 	<script src="jquery-3.6.1.min.js"></script>
 	<script>
 		$(document).ready(function() {
-
+/*5.	Edita el archivo adjunto para que al pulsar sobre el botón, la imagen del archivo adjunto se mueva hasta el extremo derecho de la pantalla a la vez que aumenta su tamaño al doble.*/arguments
+			$("button").click(function() {
+				$("img").animate({
+					left: "+=400px",
+					width: "+=400px"
+				}, "slow");
+			});
+			
 		});
 	</script>
 	</head>

@@ -100,5 +100,15 @@
 				});
 			});
 		</script>
+		<!-- 
+			3.	Vuelve a editar el primer archivo. En este caso, al pulsar en el botón, los párrafos pares deben desaparecer. Pero si se vuelve a pulsar, deben aparecer de nuevo.
+		 -->
+<script>
+			$(document).ready(function(){
+				$("button").click(function(){
+					$("p:even").toggle();
+				});
+			});
+</script>
 	</body>
 </html>
