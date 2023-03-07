@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        fieldset{
+            width: 300px;
+            height: 300px;
+            border: 1px solid black;
+        }
+        label{
+            display: block;
+            margin: 10px;
+        }
+        input{
+            display: block;
+            margin: 10px;
+        }
+        body{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+    </style>
+</head>
+<body>
+  <form action=" tp.html">
+      <Fieldset>
+        <legend>
+            formurio
+        </legend>
+        <label for="">codigo postal:</label>
+        <input type="text" name="codigo" id="codigo" >
+        <label for="">nueve caracteres:</label>
+        <input type="text" name="nueve" id="nueve" >
+        <label for="">antes rellenar:</label>
+        <input type="text" name="antes" id="antes" >
+        <!-- summit -->
+        <input type="submit" value="validad" id="validar">
+    </Fieldset>
+  </form>
+  <script>
+        let codigo = document.getElementById("codigo");
+        let nueve = document.getElementById("nueve");
+        let antes = document.getElementById("antes");
+        let validar = document.getElementById("validar");
+        codigo.addEventListener("keyup", function(){
+            if("0123456789".indexOf(codigo.value) == -1){
+             if(codigo.value.length ==5 ){
+                codigo.value = codigo.value;
+                alert("codigo postal correcto");
+               }
+            }
+        })
+        nueve.addEventListener("keyup", function(){
+            if(nueve.value.length == 9){
+                antes.value = nueve.value;
+                alert("nueve caracteres correcto");
+            }
+        })
+        antes.addEventListener("keyup", function(){
+            if(nueve.value.length == 9){
+                nueve.value = antes.value;
+                alert("antes rellenar correcto");
+            }
+        })
+        /*summit*/
+        validar.addEventListener("click", function(e){
+            e.preventDefault();
+            if(codigo.value.length == 5 && nueve.value.length == 9 && antes.value.length == 9){
+                alert("todo correcto");
+            }else{
+                alert("todo incorrecto");
+            }
+        })
+  </script>
+</body>
+</html>
