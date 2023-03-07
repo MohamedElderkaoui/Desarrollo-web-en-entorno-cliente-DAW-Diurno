@@ -49,7 +49,7 @@
         let antes = document.getElementById("antes");
         let validar = document.getElementById("validar");
         codigo.addEventListener("keyup", function(){
-            if("0123456789".indexOf(codigo.value) == -1){
+            if("0123456789".indexOf(codigo.value) !== -1){
              if(codigo.value.length ==5 ){
                 codigo.value = codigo.value;
                 alert("codigo postal correcto");
@@ -71,7 +71,7 @@
         /*summit*/
         validar.addEventListener("click", function(e){
             e.preventDefault();
-            if(codigo.value.length == 5 && nueve.value.length == 9 && antes.value.length == 9){
+            if(codigo.value.length == 5 && nueve.value.length == 9 && antes.value.length !== 9){
                 alert("todo correcto");
             }else{
                 alert("todo incorrecto");
