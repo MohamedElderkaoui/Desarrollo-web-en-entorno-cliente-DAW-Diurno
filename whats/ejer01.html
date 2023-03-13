@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        Examen 2 " EvaIaaoíon Ejercí Cl o Ca1caLaclora
+    </title>
+    <style>
+        /* .p is right,arial font-family of 40px and margin of 0.75cm */
+        .p {
+            text-align: right;
+            font-family: Arial;
+            font-size: 40px;
+            margin: 0.75cm;
+        }
+        .c {
+            text-align: center;
+            font-family: Arial;
+            font-size: 40px;
+            margin: 0.75cm;
+        }
+    </style>
+</head>
+<body>
+    <form action="ejer01.php" method="POST">
+        <div>
+            <table  border="2">
+                <tr>
+                    <td colspan="5">
+                        <div class="p" id="pantalla">
+                           0
+                        </div>
+                        
+                    </td>
+                </tr>
+                <tr>
+                    <td id="7" onclick="pulsarNumero('7')">
+                        <div class="c">7</div>
+                    </td>
+                    <td id="8" onclick="pulsarNumero('8')">
+                        <div class="c">8</div>
+                    </td>
+                    <td id="9" onclick="pulsarNumero('9')">
+                        <div class="c">9</div>
+                    </td>
+                    <!-- / -->
+                    <td id="\/" onclick="pulsarOperacion('/')">
+                        <div class="c">/</div>
+                    </td>
+                    <!-- c -->
+                    <td id="c" onclick="limpiar()">
+                        <div class="c">c</div>
+                    </td>
+
+                </tr>
+                <tr>
+                    <td id="4" onclick="pulsarNumero('4')">
+                        <div class="c">4</div>
+                    </td>
+                    <td id="5" onclick="pulsarNumero('5')">
+                        <div class="c">5</div>
+                    </td>
+                    <td id="6" onclick="pulsarNumero('6')">
+                        <div class="c">6</div>
+                    </td>
+                    <!-- * -->
+                    <td id="*" onclick="pulsarOperacion('*')">
+                        <div class="c">*</div>
+                    </td>
+                    <!-- = -->
+                    <td id="=" rowspan="3" onclick="calcular()">
+                        <div class="c">=</div>
+                    </td>
+                    
+                </tr>
+                <tr>
+                    <td id="1" onclick="pulsarNumero('1')">
+                        <div class="c">1</div>
+                    </td>
+                    <td id="2" onclick="pulsarNumero('2')">
+                        <div class="c">2</div>
+                    </td>
+                    <td id="3" onclick="pulsarNumero('3')">
+                        <div class="c">3</div>
+                    </td>
+                    <!-- - -->
+                    <td id="-" onclick="pulsarOperacion('-')">  
+                        <div class="c">-</div>
+                    </td>
+                     
+                </tr>
+                <tr>
+                    <td id="0" colspan="3" onclick="pulsarNumero('0')"> 
+                        <div class="c">0</div>
+                    </td>
+                    
+                    <!-- + -->
+                    <td id="+" onclick="pulsarOperacion('+')">
+                        <div class="c">+</div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </form>
+    <script>
+        function pulsarNumero(numero) {
+            var pantalla = document.getElementById("pantalla");
+            if (pantalla.innerHTML == "0") {
+                pantalla.innerHTML = numero;
+            } else {
+                pantalla.innerHTML = pantalla+ numero;
+            }
+        }
+
+        function limpiar() {
+            var pantalla = document.getElementById("pantalla");
+            pantalla.innerHTML = "0";
+            
+        }
+
+        function pulsarOperacion(operacion) {
+            var pantalla = document.getElementById("pantalla");
+            pantalla.innerHTML = pantalla.innerHTML + " " + operacion + " ";
+        }
+
+        function calcular() {
+            var pantalla = document.getElementById("pantalla");
+            var operacion = pantalla.innerHTML;
+            var numeros = operacion.split(" ");
+            var resultado = 0;
+            var operador = "";
+            for (var i = 0; i < numeros.length; i++) {
+                if (i == 0) {
+                    resultado = parseInt(numeros[i]);
+                } else {
+                    if (i % 2 == 0) {
+                        operador = numeros[i];
+                    } else {
+                        switch (operador) {
+                            case "+":
+                                resultado = resultado + parseInt(numeros[i]);
+                                break;
+                            case "-":
+                                resultado = resultado - parseInt(numeros[i]);
+                                break;
+                            case "*":
+                                resultado = resultado * parseInt(numeros[i]);
+                                break;
+                            case "/":
+                              if (numeros[i] == 0) {
+                               if (resultado == 0) {
+                                resultado = "Indeterminado";
+                                } else {
+                               if (resultado > 0) {
+                                resultado = "Infinito";
+                                } else {
+                                resultado = "-Infinito";
+                                }}
+                              } else {
+                                resultado = resultado / parseInt(numeros[i]);
+                                }
+                                break;
+                        }
+                    }
+                }
+            }
+            /* comentario :
+            debo hacer un if para que si el resultado es infinito o indeterminado*/
+            pantalla.innerHTML = resultado;
+        }
+
+
+
+
+    </script>
+</body>
+</html>

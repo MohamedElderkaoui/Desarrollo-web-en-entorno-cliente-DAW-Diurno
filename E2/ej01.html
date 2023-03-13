@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .c{
+            width: 100px;
+            height: 100px;
+            background-color: #f2eaeaca;
+            text-align: center;
+            font-size: 50px;
+            font-weight: bold;
+            line-height: 100px;
+            cursor: pointer;
+        }
+        
+    </style>
+</head>
+<body>
+    <form >
+        <div>
+            <table border="2">
+                <tr>
+                    <td colspan="5"><div class="c" id="secuencia">_</div>
+
+                    </td>
+                </tr>
+               <tr>
+                <td id="1">
+                    <div class="c" onclick="clic(1)">
+                        1</div>
+                </td>
+                <td id="2">
+                    <div class="c" onclick="clic(2)"
+                    >2</div>
+                </td>
+                <td id="3">
+                    <div class="c" onclick="clic(3)"
+                    >3</div>
+                </td>
+               </tr>
+                <tr>
+                 <td id="4">
+                      <div class="c" onclick="clic(4)"
+                      >4</div>
+                 </td>
+                 <td id="5">
+                      <div class="c"  onclick="clic(5)">5</div>
+                 </td>
+                 <td id="6">
+                      <div class="c"  onclick="clic(6)">6</div>
+                 </td>
+                </tr>
+                <tr>
+                 <td id="7">
+                        <div class="c"  onclick="clic(7)">7</div>
+                 </td>
+                 <td id="8">
+                        <div class="c"  onclick="clic(8)">8</div>
+                 </td>
+                 <td id="9">
+                        <div class="c"  onclick="clic(9)">9</div>
+                </td>
+                </tr>
+                <tr>
+                    <td colspan="5"><div class="c" id="R" 
+                        >Reiniciar</div>
+
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </form>
+    <script>
+        /*
+        Se propone realizar el juego “Simón dice” de forma simplificada en una aplicación Web con JavaScript. Al pulsar 3 celdas mostrará dicha secuencia de forma automática, de acuerdo a las siguientes especificaciones:
+Dispondrá de números del 1 al 9.
+Para contener cada uno de estos números se usará una etiqueta “div” para cada uno.
+Existirá otra etiqueta “div” para mostrar la secuencia de pulsaciones llamada “secuencia” (id).
+Se deberá incluir una etiqueta “div” que permita inicializar el juego llamada “R” (id).
+El funcionamiento del mismo será el siguiente:
+Al pulsar en la etiqueta “div” que contenga un número, el “div” de “secuencia” añadirá el valor hasta pulsar otro número.
+En el siguiente paso, se volverá a introducir otro número como antes, hasta pulsar de nuevo otro número.
+Al haber pulsado el tercer número, se volverá a mostrar la secuencia de pulsaciones, cambiando su color durante un instante y volviendo al blanco.
+Conforme se vaya pulsando, se mostrará la secuencia pulsada en el “div” de “secuencia”.
+Al haber pulsado “Reiniciar” se reiniciará el juego.
+Cuando se pulse una celda, ésta deberá cambiar su color durante un instante y volver al blanco.
+*/
+  let secuencia = document.getElementById("secuencia");
+        let R = document.getElementById("R");
+        let uno = document.getElementById("1");
+        let dos = document.getElementById("2");
+        let tres = document.getElementById("3");
+        let cuatro = document.getElementById("4");
+        let cinco = document.getElementById("5");
+        let seis = document.getElementById("6");
+        let siete = document.getElementById("7");
+        let ocho = document.getElementById("8");
+        let nueve = document.getElementById("9");
+        let array = [uno,dos,tres,cuatro,cinco,seis,siete,ocho,nueve];
+        R.addEventListener("click",function(){
+            secuencia.innerHTML = "_";
+        });
+        uno.addEventListener("click",function(){
+         if(secuencia.innerHTML == "_"){
+            secuencia.innerHTML = "1";
+            }else{
+                /* tres numeros */
+                if(secuencia.innerHTML.length == 3){
+                var arraySecuencia = secuencia.innerHTML.split("");
+            /* caso 1 Al haber pulsado el tercer número, se volverá a mostrar la secuencia de pulsaciones, cambiando su color durante un instante y volviendo al blanco.
+Conforme se vaya pulsando, se mostrará la secuencia pulsada en el “div” de “secuencia”.*/
+            for(let i = 0; i < arraySecuencia.length; i++){
+              switch(arraySecuencia[i]){
+                  case "1":
+                        uno.style.backgroundColor ="#f00";
+                        uno.style.color = "#fff";
+                      break;
+                    case "2":
+                        dos.style.backgroundColor ="#f00";
+                        dos.style.color = "#fff";
+                        break;
+                    case "3":
+                        tres.style.backgroundColor ="#f00";
+                        tres.style.color = "#fff";
+                        break;
+                    case "4":
+
+                        cuatro.style.backgroundColor ="#f00";
+                        cuatro.style.color = "#fff";
+                        break;
+                    case "5":
+                        cinco.style.backgroundColor ="#f00";
+                        cinco.style.color = "#fff";
+                        break;
+                    case "6":
+                        seis.style.backgroundColor ="#f00";
+                        seis.style.color = "#fff";
+                        break;
+                    case "7":
+                        siete.style.backgroundColor ="#f00";
+                        siete.style.color = "#fff";
+                        break;
+                    case "8":
+                        ocho.style.backgroundColor ="#f00";
+                        ocho.style.color = "#fff";
+                        break;
+                    case "9":
+                        nueve.style.backgroundColor ="#f00";
+                        nueve.style.color = "#fff";
+                        break;
+                    
+              }//fin switch
+            }//fin for
+            /* esperar 5 segundo y recargar la pagina */
+            setTimeout(function(){
+                location.reload();
+            },5000);
+
+        }else{
+            /* dos numeros */
+            secuencia.innerHTML += "1";
+        }
+    }
+        });
+        dos.addEventListener("click",function(){
+            if(secuencia.innerHTML == "_"){
+                secuencia.innerHTML = "2";
+                }else{
+                    /* tres numeros */
+                    if(secuencia.innerHTML.length == 3){
+                    var arraySecuencia = secuencia.innerHTML.split("");
+                /* caso 1 */
+                for(let i = 0; i < arraySecuencia.length; i++){
+                   switch(parseInt(arraySecuencia[i])){
+                      case 1:
+                          uno.style.backgroundColor ="#f00";
+                            uno.style.color = "#fff";
+                          break;
+                        case 2:
+                            dos.style.backgroundColor ="#f00";
+                            dos.style.color = "#fff";
+                            break;
+                        case 3:
+                            tres.style.backgroundColor ="#f00";
+                            tres.style.color = "#fff";
+                            break;
+                        case 4:
+    
+                            cuatro.style.backgroundColor ="#f00";
+                            cuatro.style.color = "#fff";
+                            break;
+                        case 5:
+                            cinco.style.backgroundColor ="#f00";
+                            cinco.style.color = "#fff";
+                            break;
+                        case 6:
+                            seis.style.backgroundColor ="#f00";
+                            seis.style.color = "#fff";
+                            break;
+                        case 7:
+                            siete.style.backgroundColor ="#f00";
+                            siete.style.color = "#fff";
+                            break;
+                        case 8:
+                            ocho.style.backgroundColor ="#f00";
+                            ocho.style.color = "#fff";
+                            break;
+                        case 9:
+                            nueve.style.backgroundColor ="#f00";
+                            nueve.style.color = "#fff";
+                            break;
+                        
+                  }//fin switch
+                }//fin for
+                setTimeout(function(){
+                     location.reload();
+                     },5000);
+    
+            }else{
+                /* dos numeros */
+                secuencia.innerHTML += "2";
+            }
+        }
+/* esperar 5 segundo y recargar la pagina */
+        });
+        tres.addEventListener("click",function(){
+            if(secuencia.innerHTML == "_"){
+                secuencia.innerHTML = "3";
+                }else{
+                    /* tres numeros */
+                    if(secuencia.innerHTML.length == 3){
+                    var arraySecuencia = secuencia.innerHTML.split("");
+                /* caso 1 */
+                for(let i = 0; i < arraySecuencia.length; i++){
+                   switch(parseInt(arraySecuencia[i])){
+                      case 1:
+                          uno.style.backgroundColor ="#f00";
+                            uno.style.color = "#fff";
+                          break;
+                        case 2:
+                            dos.style.backgroundColor ="#f00";
+                            dos.style.color = "#fff";
+                            break;
+                        case 3:
+                            tres.style.backgroundColor ="#f00";
+                            tres.style.color = "#fff";
+                            break;
+                        case 4:
+    
+                            cuatro.style.backgroundColor ="#f00";
+                            cuatro.style.color = "#fff";
+                            break;
+                        case 5:
+                            cinco.style.backgroundColor ="#f00";
+                            cinco.style.color = "#fff";
+                            break;
+                        case 6:
+                            seis.style.backgroundColor ="#f00";
+                            seis.style.color = "#fff";
+                            break;
+                        case 7:
+                            siete.style.backgroundColor ="#f00";
+                            siete.style.color = "#fff";
+                            break;
+                        case 8:
+                            ocho.style.backgroundColor ="#f00";
+                            ocho.style.color = "#fff";
+                            break;
+                        case 9:
+                            nueve.style.backgroundColor ="#f00";
+                            nueve.style.color = "#fff";
+                            break;
+                        
+                  }//fin switch
+                }//fin for
+                setTimeout(function(){
+                    location.reload();
+                    },5000);
+    
+            }else{
+                /* dos numeros */
+                secuencia.innerHTML += "3";
+            }
+        }/* esperar 5 segundo y recargar la pagina */
+        });
+        cuatro.addEventListener("click",function(){
+            if(secuencia.innerHTML == "_"){
+                secuencia.innerHTML = "4";
+                }else{
+                    /* tres numeros */
+                    if(secuencia.innerHTML.length == 3){
+                    var arraySecuencia = secuencia.innerHTML.split("");
+                /* caso 1 */
+                for(let i = 0; i < arraySecuencia.length; i++){
+                  switch(parseInt(arraySecuencia[i])){
+                      case 1:
+                          uno.style.backgroundColor ="#f00";
+                            uno.style.color = "#fff";
+                          break;
+                        case 2:
+                            dos.style.backgroundColor ="#f00";
+                            dos.style.color = "#fff";
+                            break;
+                        case 3:
+                            tres.style.backgroundColor ="#f00";
+                            tres.style.color = "#fff";
+                            break;
+                        case 4:
+    
+                            cuatro.style.backgroundColor ="#f00";
+                            cuatro.style.color = "#fff";
+                            break;
+                        case 5:
+                            cinco.style.backgroundColor ="#f00";
+                            cinco.style.color = "#fff";
+                            break;
+                        case 6:
+                            seis.style.backgroundColor ="#f00";
+                            seis.style.color = "#fff";
+                            break;
+                        case 7:
+                            siete.style.backgroundColor ="#f00";
+                            siete.style.color = "#fff";
+                            break;
+                        case 8:
+                            ocho.style.backgroundColor ="#f00";
+                            ocho.style.color = "#fff";
+                            break;
+                        case 9:
+                            nueve.style.backgroundColor ="#f00";
+                            nueve.style.color = "#fff";
+                            break;
+                        
+                  }//fin switch
+                }//fin for
+    
+                setTimeout(function(){
+                    location.reload();
+                    },5000);
+            }else{
+                /* dos numeros */
+                secuencia.innerHTML += "4";
+            }
+        }/* esperar 5 segundo y recargar la pagina */
+        });
+        cinco.addEventListener("click",function(){
+            if(secuencia.innerHTML == "_"){
+                secuencia.innerHTML = "5";
+                }else{
+                    /* tres numeros */
+                    if(secuencia.innerHTML.length == 3){
+                    var arraySecuencia = secuencia.innerHTML.split("");
+                /* caso 1 */
+                for(let i = 0; i < arraySecuencia.length; i++){
+                   switch(parseInt(arraySecuencia[i])){
+                      case 1:
+                          uno.style.backgroundColor ="#f00";
+                            uno.style.color = "#fff";
+                          break;
+                        case 2:
+                            dos.style.backgroundColor ="#f00";
+                            dos.style.color = "#fff";
+                            break;
+                        case 3:
+                            tres.style.backgroundColor ="#f00";
+                            tres.style.color = "#fff";
+                            break;
+                        case 4:
+    
+                            cuatro.style.backgroundColor ="#f00";
+                            cuatro.style.color = "#fff";
+                            break;
+                        case 5:
+                            cinco.style.backgroundColor ="#f00";
+                            cinco.style.color = "#fff";
+                            break;
+                        case 6:
+                            seis.style.backgroundColor ="#f00";
+                            seis.style.color = "#fff";
+                            break;
+                        case 7:
+                            siete.style.backgroundColor ="#f00";
+                            siete.style.color = "#fff";
+                            break;
+                        case 8:
+                            ocho.style.backgroundColor ="#f00";
+                            ocho.style.color = "#fff";
+                            break;
+                        case 9:
+                            nueve.style.backgroundColor ="#f00";
+                            nueve.style.color = "#fff";
+                            break;
+                        
+                  }//fin switch
+                }//fin for
+    
+                setTimeout(function(){
+                    location.reload();
+                },5000);
+            }else{
+                /* dos numeros */
+                secuencia.innerHTML += "5";
+            }
+        }/* esperar 5 segundo y recargar la pagina *//* esperar 5 segundo y recargar la pagina */
+});
+        seis.addEventListener("click",function(){
+            if(secuencia.innerHTML == "_"){
+                secuencia.innerHTML = "6";
+                }else{
+                    /* tres numeros */
+                    if(secuencia.innerHTML.length == 3){
+                    var arraySecuencia = secuencia.innerHTML.split("");
+                /* caso 1 */
+                for(let i = 0; i < arraySecuencia.length; i++){
+                   switch(parseInt(arraySecuencia[i])){
+                      case 1:
+                          uno.style.backgroundColor ="#f00";
+                            uno.style.color = "#fff";
+                          break;
+                        case 2:
+                            dos.style.backgroundColor ="#f00";
+                            dos.style.color = "#fff";
+                            break;
+                        case 3:
+                            tres.style.backgroundColor ="#f00";
+                            tres.style.color = "#fff";
+                            break;
+                        case 4:
+    
+                            cuatro.style.backgroundColor ="#f00";
+                            cuatro.style.color = "#fff";
+                            break;
+                        case 5:
+                            cinco.style.backgroundColor ="#f00";
+                            cinco.style.color = "#fff";
+                            break;
+                        case 6:
+                            seis.style.backgroundColor ="#f00";
+                            seis.style.color = "#fff";
+                            break;
+                        case 7:
+                            siete.style.backgroundColor ="#f00";
+                            siete.style.color = "#fff";
+                            break;
+                        case 8:
+                            ocho.style.backgroundColor ="#f00";
+                            ocho.style.color = "#fff";
+                            break;
+                        case 9:
+                            nueve.style.backgroundColor ="#f00";
+                            nueve.style.color = "#fff";
+                            break;
+                        
+                  }//fin switch
+                }//fin for
+    
+            }else{
+                /* dos numeros */
+                secuencia.innerHTML += "6";
+            }
+        }/* esperar 5 segundo y recargar la pagina *//* esperar 5 segundo y recargar la pagina */
+setTimeout(function(){
+    location.reload();
+    },5000);
+        });
+        siete.addEventListener("click",function(){
+            if(secuencia.innerHTML == "_"){
+                secuencia.innerHTML = "7";
+                }else{
+                    /* tres numeros */
+                    if(secuencia.innerHTML.length == 3){
+                    var arraySecuencia = secuencia.innerHTML.split("");
+                /* caso 1 */
+                for(let i = 0; i < arraySecuencia.length; i++){
+                   switch(parseInt(arraySecuencia[i])){
+                      case 1:
+                          uno.style.backgroundColor ="#f00";
+                            uno.style.color = "#fff";
+                          break;
+                        case 2:
+                            dos.style.backgroundColor ="#f00";
+                            dos.style.color = "#fff";
+                            break;
+                        case 3:
+                            tres.style.backgroundColor ="#f00";
+                            tres.style.color = "#fff";
+                            break;
+                        case 4:
+    
+                            cuatro.style.backgroundColor ="#f00";
+                            cuatro.style.color = "#fff";
+                            break;
+                        case 5:
+                            cinco.style.backgroundColor ="#f00";
+                            cinco.style.color = "#fff";
+                            break;
+                        case 6:
+                            seis.style.backgroundColor ="#f00";
+                            seis.style.color = "#fff";
+                            break;
+                        case 7:
+                            siete.style.backgroundColor ="#f00";
+                            siete.style.color = "#fff";
+                            break;
+                        case 8:
+                            ocho.style.backgroundColor ="#f00";
+                            ocho.style.color = "#fff";
+                            break;
+                        case 9:
+                            nueve.style.backgroundColor ="#f00";
+                            nueve.style.color = "#fff";
+                            break;
+                        
+                  }//fin switch
+                }//fin for
+    
+                setTimeout(function(){
+                    location.reload();
+                },5000);
+            }else{
+                /* dos numeros */
+                secuencia.innerHTML += "7";
+            }
+        }/* esperar 5 segundo y recargar la pagina *//* esperar 5 segundo y recargar la pagina */
+        });
+
+        ocho.addEventListener("click",function(){
+            if(secuencia.innerHTML == "_"){
+                secuencia.innerHTML = "8";
+                }else{
+                    /* tres numeros */
+                    if(secuencia.innerHTML.length == 3){
+                    var arraySecuencia = secuencia.innerHTML.split("");
+                /* caso 1 */
+                for(let i = 0; i < arraySecuencia.length; i++){
+                   switch(parseInt(arraySecuencia[i])){
+                      case 1:
+                          uno.style.backgroundColor ="#f00";
+                            uno.style.color = "#fff";
+                          break;
+                        case 2:
+                            dos.style.backgroundColor ="#f00";
+                            dos.style.color = "#fff";
+                            break;
+                        case 3:
+                            tres.style.backgroundColor ="#f00";
+                            tres.style.color = "#fff";
+                            break;
+                        case 4:
+    
+                            cuatro.style.backgroundColor ="#f00";
+                            cuatro.style.color = "#fff";
+                            break;
+                        case 5:
+                            cinco.style.backgroundColor ="#f00";
+                            cinco.style.color = "#fff";
+                            break;
+                        case 6:
+                            seis.style.backgroundColor ="#f00";
+                            seis.style.color = "#fff";
+                            break;
+                        case 7:
+                            siete.style.backgroundColor ="#f00";
+                            siete.style.color = "#fff";
+                            break;
+                        case 8:
+                            ocho.style.backgroundColor ="#f00";
+                            ocho.style.color = "#fff";
+                            break;
+                        case 9:
+                            nueve.style.backgroundColor ="#f00";
+                            nueve.style.color = "#fff";
+                            break;
+                        
+                  }//fin switch
+                }//fin for
+                setTimeout(function(){
+                    location.reload();
+                    },5000);
+    
+            }else{
+                /* dos numeros */
+                secuencia.innerHTML += "8";
+            }
+        }/* esperar 5 segundo y recargar la pagina */
+        });
+
+        nueve.addEventListener("click",function(){
+            if(secuencia.innerHTML == "_"){
+                secuencia.innerHTML = "9";
+                }else{
+                    /* tres numeros */
+                    if(secuencia.innerHTML.length == 3){
+                    var arraySecuencia = secuencia.innerHTML.split("");
+                /* caso 1 */
+                for(let i = 0; i < arraySecuencia.length; i++){
+                   switch(parseInt(arraySecuencia[i])){
+                      case 1:
+                          uno.style.backgroundColor ="#f00";
+                            uno.style.color = "#fff";
+                          break;
+                        case 2:
+                            dos.style.backgroundColor ="#f00";
+                            dos.style.color = "#fff";
+                            break;
+                        case 3:
+                            tres.style.backgroundColor ="#f00";
+                            tres.style.color = "#fff";
+                            break;
+                        case 4:
+    
+                            cuatro.style.backgroundColor ="#f00";
+                            cuatro.style.color = "#fff";
+                            break;
+                        case 5:
+                            cinco.style.backgroundColor ="#f00";
+                            cinco.style.color = "#fff";
+                            break;
+                        case 6:
+                            seis.style.backgroundColor ="#f00";
+                            seis.style.color = "#fff";
+                            break;
+                        case 7:
+                            siete.style.backgroundColor ="#f00";
+                            siete.style.color = "#fff";
+                            break;
+                        case 8:
+                            ocho.style.backgroundColor ="#f00";
+                            ocho.style.color = "#fff";
+                            break;
+                        case 9:
+                            nueve.style.backgroundColor ="#f00";
+                            nueve.style.color = "#fff";
+                            break;
+                        
+                  }//fin switch
+                }//fin for
+                setTimeout(function(){
+                    location.reload();
+                },5000);
+    
+            }else{
+                /* dos numeros */
+                secuencia.innerHTML += "9";
+            }
+        }/* esperar 5 segundo y recargar la pagina *//* esperar 5 segundo y recargar la pagina */
+
+                    });
+        
+    </script>
+</body>
+</html>

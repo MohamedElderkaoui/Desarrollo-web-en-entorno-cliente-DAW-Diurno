@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        form{
+            width: 50%;
+            margin: auto;
+        }
+        fieldset{
+            width: 100%;
+        }
+        label{
+            display: inline-block;
+            width: 20%;
+        }
+        input{
+            display: inline-block;
+            width: 70%;
+        }
+        span{
+            display: inline-block;
+            width: 70%;           
+        }
+
+    </style>
+</head>
+<body>
+    <form action="alta.html" method="post">
+        <fieldset>
+            <legend>Formulario</legend>
+            <!-- codig postal -->
+            <label for="cp">Código postal</label>
+            <input type="text" id="cp" name="cp" placeholder="Código postal" required>
+            <!-- tiene que tiene 5 digitos -->
+            <span id="errorCp" >El código postal debe tener 5 dígitos</span>
+            <br>
+            <!-- nueve caracter -->
+            <label for="nueve">Nueve caracteres</label>
+            <input type="text" id="nueve" name="nueve" placeholder="Nueve caracteres" required>
+            <span>
+                tienen que ser 9 caracteres
+            </span>
+
+            <br>
+            <!-- antes relleno -->
+            <label for="antes">antes relleno </label>
+            <input type="text" id="antes" name="antes" placeholder="antes relleno" required>
+            <span>
+                tiene que tener 5 caracteres antes de rellenar
+            </span>
+            <br>
+            <!-- summit -->
+            <input type="submit" value="Enviar" onclick="validarFormulario()" id="enviar">
+            
+        </fieldset>
+    </form>
+    <script>
+        var cp = document.getElementById("cp");
+        var nueve = document.getElementById("nueve");
+        var antes = document.getElementById("antes");
+        //type="submit"
+        var enviar = document.getElementById("enviar");
+        cp.addEventListener("blur", function(){
+            if(cp.value.length != 5){
+             for  (let i = 0; i < cp.length; i++) {
+               if ("1234567890".indexOf(cp.value[i]) == -1) {
+                 cp.style.backgroundColor = "red";
+                 cp.style.color = "white";
+                 cp.style.border = "1px solid red";
+                 cp.style.borderRadius = "5px";
+                 cp.style.padding = "5px";
+                 cp.style.margin = "5px";
+                 cp.style.fontWeight = "bold";
+                 cp.style.fontSize = "1.2em";
+                 cp.style.textAlign = "center";
+                 cp.style.boxShadow = "0 0 10px red";
+                 cp.style.outline = "none";
+                 cp.focus();
+                 alert("El código postal debe tener 5 dígitos");
+                 return false;
+               }
+             }
+            } else {
+                cp.style.backgroundColor = "white";
+                cp.style.color = "black";
+                cp.style.border = "1px solid black";
+                cp.style.borderRadius = "5px";
+                cp.style.padding = "5px";
+                cp.style.margin = "5px";
+                cp.style.fontWeight = "bold";
+                cp.style.fontSize = "1.2em";
+                cp.style.textAlign = "center";
+                cp.style.boxShadow = "0 0 10px black";
+                cp.style.outline = "none";
+            }
+        });
+        nueve.addEventListener("blur", function(){
+            if(nueve.value.length != 9){
+                nueve.style.backgroundColor = "red";
+                nueve.style.color = "white";
+                nueve.style.border = "1px solid red";
+                nueve.style.borderRadius = "5px";
+                nueve.style.padding = "5px";
+                nueve.style.margin = "5px";
+                nueve.style.fontWeight = "bold";
+                nueve.style.fontSize = "1.2em";
+                nueve.style.textAlign = "center";
+                nueve.style.boxShadow = "0 0 10px red";
+                nueve.style.outline = "none";
+                nueve.focus();
+                alert("El campo tiene que tener 9 caracteres");
+                return false;
+            } else {
+                nueve.style.backgroundColor = "white";
+                nueve.style.color = "black";
+                nueve.style.border = "1px solid black";
+                nueve.style.borderRadius = "5px";
+                nueve.style.padding = "5px";
+                nueve.style.margin = "5px";
+                nueve.style.fontWeight = "bold";
+                nueve.style.fontSize = "1.2em";
+                nueve.style.textAlign = "center";
+                nueve.style.boxShadow = "0 0 10px black";
+                nueve.style.outline = "none";
+            }
+        });
+        antes.addEventListener("blur", function(){
+            if(nueve.value.length != 9){
+                antes.style.backgroundColor = "red";
+                antes.style.color = "white";
+                antes.style.border = "1px solid red";
+                antes.style.borderRadius = "5px";
+                antes.style.padding = "5px";
+                antes.style.margin = "5px";
+                antes.style.fontWeight = "bold";
+                antes.style.fontSize = "1.2em";
+                antes.style.textAlign = "center";
+                antes.style.boxShadow = "0 0 10px red";
+                antes.style.outline = "none";
+                antes.focus();
+                alert("El campo tiene que tener 5 caracteres antes de rellenar");
+                return false;
+            } else {
+                antes.style.backgroundColor = "white";
+                antes.style.color = "black";
+                antes.style.border = "1px solid black";
+                antes.style.borderRadius = "5px";
+                antes.style.padding = "5px";
+                antes.style.margin = "5px";
+                antes.style.fontWeight = "bold";
+                antes.style.fontSize = "1.2em";
+                antes.style.textAlign = "center";
+                antes.style.boxShadow = "0 0 10px black";
+                antes.style.outline = "none";
+            }
+        });
+        function validarFormulario(){
+            if(cp.value.length != 5){
+                cp.style.backgroundColor = "red";
+                cp.style.color = "white";
+                cp.style.border = "1px solid red";
+                cp.style.borderRadius = "5px";
+                cp.style.padding = "5px";
+                cp.style.margin = "5px";
+                cp.style.fontWeight = "bold";
+                cp.style.fontSize = "1.2em";
+                cp.style.textAlign = "center";
+                cp.style.boxShadow = "0 0 10px red";
+                cp.style.outline = "none";
+                cp.focus();
+                alert("El código postal debe tener 5 dígitos");
+                return false;
+            } else if(nueve.value.length != 9){
+                nueve.style.backgroundColor = "red";
+                nueve.style.color = "white";
+                nueve.style.border = "1px solid red";
+                nueve.style.borderRadius = "5px";
+                nueve.style.padding = "5px";
+                nueve.style.margin = "5px";
+                nueve.style.fontWeight = "bold";
+                nueve.style.fontSize = "1.2em";
+                nueve.style.textAlign = "center";
+                nueve.style.boxShadow = "0 0 10px red";
+                nueve.style.outline = "none";
+                nueve.focus();
+                alert("El campo tiene que tener 9 caracteres");
+                return false;
+            } else if(antes.value.length != 5){
+                antes.style.backgroundColor = "red";
+                antes.style.color = "white";
+                antes.style.border = "1px solid red";
+                antes.style.borderRadius = "5px";
+                antes.style.padding = "5px";
+                antes.style.margin = "5px";
+                antes.style.fontWeight = "bold";
+                antes.style.fontSize = "1.2em";
+                antes.style.textAlign = "center";
+                antes.style.boxShadow = "0 0 10px red";
+                antes.style.outline = "none";
+                antes.focus();
+                alert("El campo tiene que tener 5 caracteres antes de rellenar");
+                return false;
+            } else {
+                return true;
+            }
+        }
+    </script>
+</body>
+</html>

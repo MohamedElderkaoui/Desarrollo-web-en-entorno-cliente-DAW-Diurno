@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /*  <form action="">
+        <fieldset>
+            <legend>formu</legend>
+            <!-- Turno: _ V
+Ejercicio 2. Validación de formulario (3 puntos)
+Se debe crear una página Web con javaScript que contenga un formulario en el que se puedan introducir
+los datos siguientes:
+- Validación de un número de cuenta bancaria (exactamente 20 dígitos). Mostrar un mensaje (en una
+ventana emergente) informando de que el campo no se ha rellenado de forma correcta (0°5
+puntos).
+- Un campo de entrada tenga exactamente 6 caracteres alfanuméricos. Mostrar un mensaje (en una
+ventana emergente) informando de que el campo no se ha rellenado de forma correcta (O'S
+puntos).
+- Un campo que para poder ser rellenado dependa de si el anterior (el de 6 caracteres) se rellenó (l
+punto).
+- Mediante un botón permita enviar el formulario si los 2 primeros campos son correctos. Mostrar un
+mensaje (en una ventana emergente) informando de que algún campo no se ha rellenado de forma
+correcta (l punto).
+- Se tendrá en cuenta la eficiencia en el código y en la propuesta de solución. El código deberá estar
+bien comentado. Siempre que se pueda, hay que utilizar funciones de usuario. -->
+            <label for="cuenta">cuenta</label>
+            <input type="text" name="cuenta" id="cuenta">
+            <label for="alfanum">alfanum</label>
+            <input type="text" name="alfanum" id="alfanum">
+            <label for="alfanum2">alfanum2</label>
+            <input type="text" name="alfanum2" id="alfanum2">
+            <input type="submit" value="enviar">
+        </fieldset>
+    </form>*/
+        form {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        fieldset {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        label {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 20px;
+        }
+        input {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 20px;
+        }
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 20px;
+        }
+        form {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 20px;
+        }
+        #cuenta {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 20px;
+        }
+        #cuenta:valid {
+            background-color: green;
+        }
+        #cuenta:invalid {
+            background-color: red;
+        }
+        /* foco  en  #cuenta */
+        #cuenta:focus {
+            background-color: yellow;
+        }
+
+/****************
+alfanum
+****************/
+        #alfanum {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 20px;
+        }
+        #alfanum:valid {
+            background-color: green;
+        }
+        #alfanum:invalid {
+            background-color: red;
+        }
+        /* foco  en  #alfanum */
+        #alfanum:focus {
+            background-color: yellow;
+        }
+/****************
+alfanum2
+****************/
+        #alfanum2 {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 20px;
+        }
+        #alfanum2:valid {
+            background-color: green;
+        }
+        #alfanum2:invalid {
+            background-color: red;
+        }
+        /* foco  en  #alfanum2 */
+        #alfanum2:focus {
+            background-color: yellow;
+        }
+    </style>
+</head>
+<body>
+    <!-- 
+        con python -m http.server 8080
+     -->
+    <form action="post">
+        <fieldset>
+            <legend>formu</legend>
+            <!-- Turno: _ V
+Ejercicio 2. Validación de formulario (3 puntos)
+Se debe crear una página Web con javaScript que contenga un formulario en el que se puedan introducir
+los datos siguientes:
+- Validación de un número de cuenta bancaria (exactamente 20 dígitos). Mostrar un mensaje (en una
+ventana emergente) informando de que el campo no se ha rellenado de forma correcta (0°5
+puntos).
+- Un campo de entrada tenga exactamente 6 caracteres alfanuméricos. Mostrar un mensaje (en una
+ventana emergente) informando de que el campo no se ha rellenado de forma correcta (O'S
+puntos).
+- Un campo que para poder ser rellenado dependa de si el anterior (el de 6 caracteres) se rellenó (l
+punto).
+- Mediante un botón permita enviar el formulario si los 2 primeros campos son correctos. Mostrar un
+mensaje (en una ventana emergente) informando de que algún campo no se ha rellenado de forma
+correcta (l punto).
+- Se tendrá en cuenta la eficiencia en el código y en la propuesta de solución. El código deberá estar
+bien comentado. Siempre que se pueda, hay que utilizar funciones de usuario. -->
+            <label for="cuenta">cuenta</label>
+            <input type="text" name="cuenta" id="cuenta">
+            <label for="alfanum">alfanum</label>
+            <input type="text" name="alfanum" id="alfanum">
+            <label for="alfanum2">alfanum2</label>
+            <input type="text" name="alfanum2" id="alfanum2">
+            <input type="submit" value="enviar">
+        </fieldset>
+    </form>
+    <script>
+        let cuenta = document.querySelector("#cuenta");
+        let alfanum = document.querySelector("#alfanum");
+        let alfanum2 = document.querySelector("#alfanum2");
+        let submit = document.querySelector("input[type=submit]");
+      /* Se debe crear una página Web con javaScript que contenga un formulario en el que se puedan introducir
+los datos siguientes:
+- Validación de un número de cuenta bancaria (exactamente 20 dígitos). Mostrar un mensaje (en una
+ventana emergente) informando de que el campo no se ha rellenado de forma correcta (0°5
+puntos).
+- Un campo de entrada tenga exactamente 6 caracteres alfanuméricos. Mostrar un mensaje (en una
+ventana emergente) informando de que el campo no se ha rellenado de forma correcta (O'S
+puntos).
+- Un campo que para poder ser rellenado dependa de si el anterior (el de 6 caracteres) se rellenó (l
+punto).
+- Mediante un botón permita enviar el formulario si los 2 primeros campos son correctos. Mostrar un
+mensaje (en una ventana emergente) informando de que algún campo no se ha rellenado de forma
+correcta (l punto).
+- Se tendrá en cuenta la eficiencia en el código y en la propuesta de solución. El código deberá estar
+bien comentado. Siempre que se pueda, hay que utilizar funciones de usuario.*/
+        cuenta.addEventListener("change", function () {
+            if (cuenta.value.length == 20) {
+                cuenta.style.backgroundColor = "green";
+            } else {
+                cuenta.style.backgroundColor = "red";
+            }
+        });
+        alfanum.addEventListener("change", function () {
+            if (alfanum.value.length == 6) {
+                alfanum.style.backgroundColor = "green";
+            } else {
+                alfanum.style.backgroundColor = "red";
+            }
+        });
+        alfanum2.addEventListener("change", function () {
+            if (alfanum.value.length == 6) {
+                alfanum2.style.backgroundColor = "green";
+            } else {
+                alfanum2.style.backgroundColor = "red";
+            }
+        });
+        submit.addEventListener("click", function (e) {
+            e.preventDefault();
+            if (cuenta.value.length == 20 && alfanum.value.length == 6 && alfanum2.value.length == 6) {
+                alert("todo correcto");
+            } else {
+                alert("algo no es correcto");
+            }
+        });        cuenta.addEventListener("change", function () {
+            if (cuenta.value.length == 20) {
+                cuenta.style.backgroundColor = "green";
+            } else {
+                cuenta.style.backgroundColor = "red";
+            }
+        });
+        alfanum.addEventListener("change", function () {
+            if (alfanum.value.length == 6) {
+                alfanum.style.backgroundColor = "green";
+            } else {
+                alfanum.style.backgroundColor = "red";
+            }
+        });
+        alfanum2.addEventListener("change", function () {
+            if (alfanum.value.length == 6) {
+                alfanum2.style.backgroundColor = "green";
+            } else {
+                alfanum2.style.backgroundColor = "red";
+            }
+        }); submit.addEventListener("click", function (e) {
+            e.preventDefault();
+            if (cuenta.value.length == 20) {
+                
+                if (alfanum.value.length == 6) {
+                    if (alfanum2.value.length == 6) {
+                        alert("todo ok");
+                    } else {
+                        alert("no has rellenado el campo alfanum2");
+                    }
+                } else {
+                    alert("no has rellenado el campo alfanum");
+                }
+            } else {
+                alert("no has rellenado el campo cuenta");
+            }          
+        });
+    </script>
+</body>
+</html>
