@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+       <script>
+         function tiempo(){
+             var dayhoy= new Date();
+            var texto="<h1>HORA ACTUAL</h1><br>"
+            texto= texto.concat(dayhoy.getHours());
+            texto= texto.concat(":");
+            texto= texto.concat(dayhoy.getMinutes());
+            texto= texto.concat(":");
+            texto= texto.concat(dayhoy.getSeconds());
+            texto= texto.concat("<br>");
+            texto= texto.concat("<h1>FECHA  ACTUAL</h1><br>");
+          
+            texto= texto.concat(dayhoy.getDate());
+            texto= texto.concat(" ");
+            switch(dayhoy.getMonth()){
+                case 0:
+                texto= texto.concat("Enero ");
+                break; case 1:
+                texto= texto.concat("febrero ");
+                break;
+                case 2:
+                texto= texto.concat("marzo");
+                break;
+                case 3:
+                texto= texto.concat("abril");
+                break;
+                case 4:
+                texto= texto.concat("mayo");
+                break;
+                case 5:
+                texto= texto.concat("junio");
+                break;
+                case 6:
+                texto= texto.concat("julio");
+                break;
+                
+                case 7:
+                texto= texto.concat("agosto");
+
+                break;
+                
+                case 8:
+                texto= texto.concat("septiembre");
+                break;
+                case 9 : 
+                texto= texto.concat("octobre");
+                break;
+                case 10 :  texto= texto.concat("noviembre");break;
+                 case 11 :  texto= texto.concat("diciembre");break;
+
+
+            }
+             texto= texto.concat();
+            texto= texto.concat(" ");
+
+              texto= texto.concat(dayhoy.getUTCFullYear
+()
+);
+                        return texto;
+         }
+        document.bgColor="red";
+   var jokok="top=100,left=100, width=300,height=150",i=0;
+ var mi_ventana=window.open("", "myWindow", jokok);
+    mi_ventana.document.bgColor="green";
+       
+    mi_ventana.document.write(tiempo());
+         setTimeout(mi_ventana.close(),10000);       
+
+    </script>
+</head>
+<body>
+<br>
+ 
+    
+</body>
+</html>

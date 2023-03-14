@@ -105,35 +105,39 @@
         </div>
     </form>
     <script>
+        var memoria="";
         function pulsarNumero(numero) {
             var pantalla = document.getElementById("pantalla");
-            if (pantalla.innerHTML == "0") {
+            pantalla.innerHTML = " ";
+            if (pantalla.innerHTML == "0") {        pantalla.innerHTML = " 2";
                 pantalla.innerHTML = numero;
+                memoria=numero;
             } else {
                 
                 pantalla.innerHTML = pantalla.innerHTML + numero;
+                memoria=memoria+numero;
             }
         }
 
         function limpiar() {
             var pantalla = document.getElementById("pantalla");
-            pantalla.innerHTML = "0";
-            
+            pantalla.innerHTML = " 0";
+              memoria=" ";
         }
 
         function pulsarOperacion(operacion) {
-            var pantalla = document.getElementById("pantalla");
-            pantalla.innerHTML = pantalla.innerHTML + " " + operacion + " ";
+         
+              memoria=memoria+ " " + operacion +" ";      pantalla.innerHTML = " ";
         }
 
         function calcular() {
             var pantalla = document.getElementById("pantalla");
-            var operacion = pantalla.innerHTML;
-            var numeros = operacion.split(" ");
+         
+            var numeros = memoria.split(" ");
             var resultado = 0;
-            var operador = "";
+            var operador = " ";
             for (var i = 0; i < numeros.length; i++) {
-                if (i == 0) {
+                if (i == 1) {
                     resultado = parseInt(numeros[i]);
                 } else {
                     if (i % 2 == 0) {
@@ -161,7 +165,7 @@
                                 }}
                               } else {
                                 resultado = resultado / parseInt(numeros[i]);
-                                }
+                                }   
                                 break;
                         }
                     }
@@ -169,7 +173,8 @@
             }
             /* comentario :
             debo hacer un if para que si el resultado es infinito o indeterminado*/
-            pantalla.innerHTML = resultado;
+            pantalla.innerHTML = resultado+"";
+            memoria="";
         }
 
 
