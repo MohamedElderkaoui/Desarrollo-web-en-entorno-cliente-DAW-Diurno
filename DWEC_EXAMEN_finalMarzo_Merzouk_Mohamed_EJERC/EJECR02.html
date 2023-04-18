@@ -106,7 +106,7 @@
     </form>
     <script>
         var operacion = "";
-        var memoria="";
+        var memoria=0;
         function pulsarNumero(numero) {
             var pantalla = document.getElementById("pantalla");
             var n = parseInt(pantalla.innerHTML)*10 + parseInt(numero);
@@ -119,8 +119,8 @@
               memoria=0;
         }
 
-        function pulsarOperacion(operacion) {
-         operacion = operacion;
+        function pulsarOperacion(e) {
+         operacion = operacion + e;
             var pantalla = document.getElementById("pantalla");
             memoria =parseInt(pantalla.innerHTML);
             pantalla.innerHTML = "0";
@@ -132,22 +132,22 @@
             var resultado = 0;
             switch (operacion) {
                 case "+":
-                    resultado = parseInt(memoria) + parseInt(pantalla.innerHTML);
+                    pantalla.innerHTML = parseInt(memoria) + parseInt(pantalla.innerHTML);
                     break;
                 case "-":
-                    resultado = parseInt(memoria) - parseInt(pantalla.innerHTML);
+                    pantalla.innerHTML = parseInt(memoria) - parseInt(pantalla.innerHTML);
                     break;
                 case "*":
-                    resultado = parseInt(memoria) * parseInt(pantalla.innerHTML);
+                    pantalla.innerHTML = parseInt(memoria) * parseInt(pantalla.innerHTML);
                     break;
                 case "/":if(parseInt(pantalla.innerHTML)==0){
-                    resultado="Error";
+                    pantalla.innerHTML="Error";
                 }else{
-                    resultado = parseInt(memoria) / parseInt(pantalla.innerHTML);
+                    pantalla.innerHTML = parseInt(memoria) / parseInt(pantalla.innerHTML);
                 }
                     break;
             }
-            pantalla.innerHTML = resultado+"";
+        
               }
 
 
