@@ -105,13 +105,14 @@
         </div>
     </form>
     <script>
+        var memoria = 0;
         function pulsarNumero(numero) {
             var pantalla = document.getElementById("pantalla");
             if (pantalla.innerHTML == "0") {
                 pantalla.innerHTML = numero;
             } else {
-                
-                pantalla.innerHTML = pantalla.innerHTML + numero;
+                var pantalla = parseInt(pantalla.innerHTML)*10 + parseInt(numero);
+                pantalla.innerHTML = pantalla;
             }
         }
 
@@ -123,55 +124,29 @@
 
         function pulsarOperacion(operacion) {
             var pantalla = document.getElementById("pantalla");
-            pantalla.innerHTML = pantalla.innerHTML + " " + operacion + " ";
+            memoria = pantalla.innerHTML;
+            pantalla.innerHTML =0;
         }
 
         function calcular() {
             var pantalla = document.getElementById("pantalla");
-            var operacion = pantalla.innerHTML;
-            var numeros = operacion.split(" ");
             var resultado = 0;
-            var operador = "";
-            for (var i = 0; i < numeros.length; i++) {
-                if (i == 0) {
-                    resultado = parseInt(numeros[i]);
-                } else {
-                    if (i % 2 == 0) {
-                        operador = numeros[i];
-                    } else {
-                        switch (operador) {
-                            case "+":
-                                resultado = resultado + parseInt(numeros[i]);
-                                break;
-                            case "-":
-                                resultado = resultado - parseInt(numeros[i]);
-                                break;
-                            case "*":
-                                resultado = resultado * parseInt(numeros[i]);
-                                break;
-                            case "/":
-                              if (numeros[i] == 0) {
-                               if (resultado == 0) {
-                                resultado = "Indeterminado";
-                                } else {
-                               if (resultado > 0) {
-                                resultado = "Infinito";
-                                } else {
-                                resultado = "-Infinito";
-                                }}
-                              } else {
-                                resultado = resultado / parseInt(numeros[i]);
-                                }
-                                break;
-                        }
-                    }
-                }
+            switch (operacion) {
+                case "+":
+                    resultado = parseInt(memoria) + parseInt(pantalla.innerHTML);
+                    break;
+                case "-":
+                    resultado = parseInt(memoria) - parseInt(pantalla.innerHTML);
+                    break;
+                case "*":
+                    resultado = parseInt(memoria) * parseInt(pantalla.innerHTML);
+                    break;
+                case "/":
+                    resultado = parseInt(memoria) / parseInt(pantalla.innerHTML);
+                    break;
             }
-            /* comentario :
-            debo hacer un if para que si el resultado es infinito o indeterminado*/
             pantalla.innerHTML = resultado;
         }
-
 
 
 

@@ -21,6 +21,44 @@
             font-size: 40px;
             margin: 0.75cm;
         }
+        /* .c is center,arial font-family of 40px and margin of 0.75cm */
+        table {
+            border-collapse: collapse;
+            width: 30%;
+        }
+        /* table is border-collapse of collapse and width of 30% */
+        td {
+            border: 1px solid black;
+        }
+        /* td is border of 1px solid black */
+        #= {
+            background-color: gray;
+        }
+        /* #= is background-color of gray */
+        #c {
+            background-color: red;
+        }
+        /* #c is background-color of red */
+        #\/ {
+            background-color: gray;
+        }
+        /* #\/ is background-color of gray */
+        #+ {
+            background-color: gray;
+        }
+        /* #+ is background-color of gray */
+        #* {
+            background-color: gray;
+        }
+        /* #* is background-color of gray */
+        #- {
+            background-color: gray;
+        }
+        /* #- is background-color of gray */
+        td:hover {
+            background-color: yellow;
+        }
+        /* td:hover is background-color of yellow */
     </style>
 </head>
 <body>
@@ -141,7 +179,15 @@
                     pantalla.innerHTML = parseInt(memoria) * parseInt(pantalla.innerHTML);
                     break;
                 case "/":if(parseInt(pantalla.innerHTML)==0){
-                    pantalla.innerHTML="Error";
+                  if(parseInt(memoria)==0){
+                    pantalla.innerHTML = "Error";
+                  }else{
+                    if(parseInt(memoria)>0){
+                      pantalla.innerHTML = "Infinito";
+                    }else{
+                        pantalla.innerHTML = "-Infinito";
+                        }
+                    }
                 }else{
                     pantalla.innerHTML = parseInt(memoria) / parseInt(pantalla.innerHTML);
                 }
